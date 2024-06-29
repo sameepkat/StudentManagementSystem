@@ -1,0 +1,15 @@
+{
+  "name": "studentmanagementsystem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "admin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "AnsarulHaq786, grishrana, rojinatiwari, Suchitabaral, sameepkat",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}
