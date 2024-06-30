@@ -4,8 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Management System</title>
+    <link rel="stylesheet" href="admin.css">
 </head>
 <body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="admin.css">
+    <title>Registration Form</title>
+
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <p>Please fill out this form with the required information</p>
+    <form action="/" method="post">
+        <fieldset > 
+            <label for="fullName" >Enter Your Full Name: <input type="text" id="fullName" required name="fullName"></label>
+            
+            <label  for="address">Enter Your Address: <input type="text" id="address" required name="address"></label>
+            <label for="email">Enter Your Email: <input type="email" id="email" required name="email"></label>
+            <label for="symbolNo">Enter Your Symbol No: <input type="number" id="symbolNo" required name="symbolNo"></label>
+            <label for="rollNo"> Enter your PU Registration No: <input type="number"  id="rollNo" name="rollNo"></label>
+            <label  for="newPassword">Enter the Password: <input type="password" id="newPassword" required pattern="[a-z0-5]{8,}" name="password"></label>
+        </fieldset>
+        <fieldset>
+            <legend>Gender </legend>
+            <label  for="Male">  <input type="radio" name="genderType"  id="male" checked class="inline">  Male</label>
+            <label  for="Female"><input type="radio" name="genderType" id="Female " class="inline"> Female</label>
+            <label  for="Others"><input type="radio" name="genderType" id="Others" class="inline"> Others</label>
+        </fieldset>
+        <fieldset>
+            <label for="profilePicture" >Upload a profile picture:  <input type="file" id="profilePicture" name="profilePicture"> </label>
+            
+        </fieldset>
+        
+        <label for="termsAndConditions"><input type="checkbox" required id="termsAndConditions" name="termsAndConditions" class="inline">I accept  <a href="">terms and conditions</a> </label>
+       
+        <input type="Submit" value="Submit"> </form>
+       
+
+    </form>
     
+</body>
+</html>
 </body>
 </html>
