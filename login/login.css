@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.container {
+    width: 300px;
+    margin: 40px auto;
+    padding: 50px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc
+}
+.language-button {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.language-button:hover {
+    background-color: #3e8e41;
+}
+.language-container {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+.loginButton{
+
+    width: 108%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: large;
+    font-style: normal;
+
+}

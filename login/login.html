@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System Login</title>
+	<link rel="stylesheet" href="login.css">
+  </head>
+  <body>
+    <div class="container">
+      <h2><img src="../src/login_PU_logo.png" width="300" height="90" /></h2>
+      <form>
+        <label for="username" id="usernameLabel">Username:</label>
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+		  maxlength="15"
+          required
+        /><br /><br />
+        <label for="password" id="passwordLabel">Password:</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          required
+        /><br /><br />
+        <button type="submit" id="loginBtn">Login</button>
+      </form>
+      <div class="language-container">
+        <button class="language-button" onclick="setLanguage('en')">
+          English
+        </button>
+        <button class="language-button" onclick="setLanguage('ne')">
+          नेपाली
+        </button>
+      </div>
+    </div>
+	<script src="login.js"></script>
+  </body>
+</html>
