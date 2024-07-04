@@ -92,11 +92,14 @@ img {
   transition: all 0.3s;
 }
 
-.navbarLeft ul li a {
+.navbarLeft ul li button {
   text-decoration: none;
   color: inherit;
   margin-top: 10px;
   margin-bottom: 5px;
+  background: none;
+  width: 100%;
+  height: 100%;
 }
 
 

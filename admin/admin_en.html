@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
     <link rel="stylesheet" href="admin.css" />
+    <script src="admin.js"></script>
   </head>
   <body>
+    
     <div class="container">
       <div class="navbarLeft">
         <img src="../src/student.jpg" alt="" class="src" />
         <ul>
-          <li><a href="#" >Student Details</a></li>
-          <li><a href="#">1st sem Internal</a></li>
-          <li><a href="#">1st sem Final Marks</a></li>
+          <li><button onclick="">Student Details    </button></li>
+          <li><button onclick="fetchData('users')">1st sem Internal   </button></li>
+          <li><button onclick="fetchData('final_Table')">1st sem Final Marks</button></li>
         </ul>
         <button class="logout">Logout</button>
       </div>
-      <div class="mainContent" id="mainContent">
-        <!-- Main content area -->
-      </div>
+      <div class="mainContent" id="mainContent"></div>
       <div class="navbarRight">
         <div class="feature">
           <button>Add</button>
