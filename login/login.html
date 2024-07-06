@@ -9,7 +9,7 @@
   <body>
     <div class="container">
       <h2><img src="../src/login_PU_logo.png" width="300" height="90" /></h2>
-      <form>
+      <form id="loginForm" >
         <label for="username" id="usernameLabel">Username:</label>
         <input
           type="text"
@@ -25,7 +25,7 @@
           class="form-control"
           required
         /><br /><br />
-        <button type="submit" id="loginBtn">Login</button>
+        <button id="loginBtn" type="submit">Login</button>
       </form>
       <div class="language-container">
         <button class="language-button" onclick="setLanguage('en')">

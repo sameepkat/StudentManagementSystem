@@ -1,3 +1,16 @@
+/*querySelectors*/
+//Buttons
+const addBtnClicked = document.getElementById('addBtn');
+
+//Styles
+const containerAddBtn = document.querySelector('.container-addBtn');
+/*variables*/
+//styles
+const blackBorder = "border: 1px solid black;";
+//state
+let showingAddContainer = false;
+
+//functions
 function fetchData(table) {
   fetch("../php/studentFinal.php?table=" + table)
     .then((response) => response.json())
@@ -9,6 +22,7 @@ function fetchData(table) {
     });
 }
 function displayData(data) {
+  console.log(data);
   const dataDiv = document.getElementById("mainContent");
   dataDiv.innerHTML = "";
   if (data.length > 0) {
@@ -24,18 +38,37 @@ function displayData(data) {
 
     data.forEach((row) => {
       const tr = document.createElement("tr");
-      tr.style.cssText = "border: 1px solid black";
+      tr.style.cssText = blackBorder;
       Object.values(row).forEach((value) => {
         const td = document.createElement("td");
-        td.style.cssText = "border: 1px solid black";
+        td.style.cssText = blackBorder;
         td.textContent = value;
         tr.appendChild(td);
       });
       table.appendChild(tr);
     });
     dataDiv.appendChild(table);
-    table.style.cssText = "border: 1px solid black; border-collapse: collapse;";
+    table.style.cssText = `${blackBorder} border-collapse: collapse;`;
   } else {
     alert("No data found");
   }
 }
+
+
+//Event Listeners
+addBtnClicked.addEventListener('click',(e)=>{
+  e.stopPropagation();
+  if(!showingAddContainer){
+    containerAddBtn.style.display = 'block';
+    showingAddContainer = true;
+  }
+  else{
+    containerAddBtn.style.display = 'none';
+    showingAddContainer = false;
+  }
+  document.addEventListener('click',(e)=>{
+    if(!containerAddBtn.contains(e.target)){
+      containerAddBtn.style.display = 'none';
+    }
+  })
+});

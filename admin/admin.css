@@ -216,3 +216,80 @@ img {
       padding: 5px 10px;
   }
 }
+
+/* Add Button*/
+
+      .container-addBtn{
+        display:none;
+        background-color: white;
+           position: absolute;
+           max-width:650px;
+            padding:28px;
+            box-shadow: 0 15px 20px;
+            border:5px rgb(248, 246, 246);
+            border-radius: 2px;
+      }
+       .content{
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: space-between; 
+         padding: 20px 0;
+       }
+
+       .input-box {
+        display:flex;
+        flex-wrap: wrap;
+      width:40%;
+      padding-bottom:15px;
+      
+    }
+    
+    .input-box input{
+        height:40px;
+        width:95%;
+        padding:0 5px;
+        border-radius: 3px;
+        border:1px solid #ccc;
+        outline: none;
+    }
+    .input-box select {
+       height: 25px;
+       padding: 3px; 
+}
+    
+.container-addBtn{
+  position: absolute;
+  max-width:650px;
+   padding:28px;
+   box-shadow: 0 15px 20px;
+   border:1px rgb(248, 246, 246);
+   border-radius: 2px;
+}
+.content{
+display:flex;
+flex-wrap: wrap;
+justify-content: space-between; 
+padding: 20px 0;
+}
+
+.input-box {
+display:flex;
+flex-wrap: wrap;
+width:40%;
+padding-bottom:15px;
+
+}
+
+.input-box input{
+height:40px;
+width:95%;
+padding:0 5px;
+border-radius: 3px;
+border:1px solid #ccc;
+outline: none;
+}
+.input-box select {
+height: 25px;
+padding: 3px; 
+}
+
