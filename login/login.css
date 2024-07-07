@@ -44,3 +44,6 @@ body {
     font-style: normal;
 
 }
+#wrongUsernameOrPassword{
+    display: none;
+}

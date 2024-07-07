@@ -5,30 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
     <link rel="stylesheet" href="admin.css" />
+    <script src="admin.js" defer></script>
   </head>
   <body>
     <div class="container">
       <div class="navbarLeft">
         <img src="../src/student.jpg" alt="" class="src" />
         <ul>
-          <li><a href="#" >Student Details</a></li>
-          <li><a href="#">1st sem Internal</a></li>
-          <li><a href="#">1st sem Final Marks</a></li>
+          <li>
+            <button onclick="fetchData('studentInfo')">Student Details</button>
+          </li>
+          <li>
+            <button onclick="fetchData('InternalResult1stSem')">
+              1st sem Internal
+            </button>
+          </li>
+          <li>
+            <button onclick="fetchData('FinalResult1stSem')">
+              1st sem Final Marks
+            </button>
+          </li>
         </ul>
         <button class="logout">Logout</button>
       </div>
-      <div class="mainContent" id="mainContent">
-        <!-- Main content area -->
-      </div>
+      <div class="mainContent" id="mainContent"></div>
       <div class="navbarRight">
         <div class="feature">
-          <button>Add</button>
+          <button id="addBtn">Add</button>
           <button>Edit</button>
           <button>Delete</button>
         </div>
       </div>
     </div>
-
-   
+    <div class="container-addBtn">
+      <form action=" " method="post">
+        <div class="content">
+          <div class="input-box">
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter your name" />
+          </div>
+          <div class="input-box">
+            <label for="semester">Semester:</label>
+            <select id="semester">
+              <option value="1">Semester I</option>
+              <option value="2">Semester II</option>
+              <option value="3">Semester III</option>
+              <option value="4">Semester IV</option>
+              <option value="5">Semester V</option>
+              <option value="6">Semester VI</option>
+              <option value="7">Semester VII</option>
+              <option value="8">Semester VIII</option>
+            </select>
+          </div>
+          <div class="input-box">
+            <label for="rollno"> Roll No:</label>
+            <input
+              type="text"
+              id="rollno"
+              placeholder="Enter your roll number"
+            />
+          </div>
+          <div class="input-box">
+            <label for="symbolno">Symbol No:</label>
+            <input type="text" id="symbolno" placeholder="Number" />
+          </div>
+          <div class="input-box">
+            <label for="gender">Gender:</label>
+            <select id="gender">
+              <option value="1">Male</option>
+              <option value="2">Female</option>
+            </select>
+          </div>
+          <div class="input-box">
+            <label for="faculty">Faculty:</label>
+            <select id="faculty">
+              <option value="1">Software Engineering</option>
+              <option value="2">Electrical Engineering</option>
+              <option value="3">Computer Engineering</option>
+              <option value="4">Civil Engineering</option>
+              <option value="5">Civil and Rular Engineering</option>
+            </select>
+          </div>
+          <div class="input-box">
+            <label for="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter your email address"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
   </body>
 </html>

@@ -1,25 +1,26 @@
+<!-- Start-->
 <!DOCTYPE html>
-<html lang="ne">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ड्यासबोर्ड</title>
     <link rel="stylesheet" href="admin.css" />
+    <script src="admin.js"></script>
   </head>
   <body>
+    
     <div class="container">
       <div class="navbarLeft">
         <img src="../src/student.jpg" alt="" class="src" />
         <ul>
-          <li><a href="#" >विद्यार्थी विवरण</a></li>
-          <li><a href="#">पहिलो सेमी आन्तरिक</a></li>
-          <li><a href="#">पहिलो सेमी फाइनल</a></li>
+          <li><button onclick="">विद्यार्थी विवरण</button></li>
+          <li><button onclick="fetchData('users')">पहिलो सेमी आन्तरिक</button></li>
+          <li><button onclick="fetchData('final_Table')">पहिलो सेमी फाइनल</button></li>
         </ul>
         <button class="logout">बाहिर निस्कनुहोस्</button>
       </div>
-      <div class="mainContent" id="mainContent">
-        <!-- Main content area -->
-      </div>
+      <div class="mainContent" id="mainContent"></div>
       <div class="navbarRight">
         <div class="feature">
           <button>थप्नुहोस्</button>
