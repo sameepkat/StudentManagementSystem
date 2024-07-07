@@ -1,12 +1,12 @@
 <?php
 include ('dbconnection.php');
-$adminDatabase = 'users';
+$adminDatabase = 'admin';
 if($_GET['table']){
     $table = $_GET['table'];
     $username = $_GET['username'];
     $password = $_GET['password'];
     if ($table === $adminDatabase){
-        $query = "SELECT * FROM {$adminDatabase} WHERE first_name='{$username}'";
+        $query = "SELECT * FROM {$adminDatabase} WHERE username='{$username}' AND password='{$password}'";
         $result = mysqli_query($connection, $query);
         $row = mysqli_num_rows($result);
         if ($row > 0) {
