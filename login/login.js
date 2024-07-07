@@ -6,6 +6,7 @@ const loginBtn = document.getElementById("loginBtn");
 //Input box selectors for Validation
 const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
+const wrongLogin = document.getElementById('wrongUsernameOrPassword');
 /*Variables*/
 //For Authentication
 
@@ -42,8 +43,9 @@ function fetchData() {
         console.log(`${data[admin]["first_name"]}:${data[admin]["password"]}`);
     })
     .catch((error) => {
-      alert("Database error: I created\n" + error);
       console.log("Fetch error: ", error);
+      wrongLogin.style.display = 'block';
+      wrongLogin.textContent = "Incorrect Username or password!";
     });
 }
 

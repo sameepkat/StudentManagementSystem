@@ -31,6 +31,7 @@ function displayData(data) {
 
     Object.keys(data[0]).forEach((key) => {
       const th = document.createElement("th");
+      th.style.cssText = blackBorder;
       th.textContent = key;
       headerRow.appendChild(th);
     });
@@ -38,7 +39,7 @@ function displayData(data) {
 
     data.forEach((row) => {
       const tr = document.createElement("tr");
-      tr.style.cssText = blackBorder;
+      tr.style.cssText = `${blackBorder}`;
       Object.values(row).forEach((value) => {
         const td = document.createElement("td");
         td.style.cssText = blackBorder;
@@ -48,9 +49,14 @@ function displayData(data) {
       table.appendChild(tr);
     });
     dataDiv.appendChild(table);
-    table.style.cssText = `${blackBorder} border-collapse: collapse;`;
+    table.style.cssText = `${blackBorder} border-collapse: collapse;
+    `;
+    const evenRows = document.querySelectorAll('tr:nth-child(even)');
+    evenRows.forEach(row=>row.style.cssText+='background-color: rgba(164,164,164,0.25);;');
+
   } else {
-    alert("No data found");
+    console.log("No data found");
+    dataDiv.innerHTML = "<h1>No Data Found</h1>";
   }
 }
 

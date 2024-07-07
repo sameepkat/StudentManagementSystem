@@ -4,7 +4,7 @@ include('dbconnection.php');
 // $query = "SELECT * FROM `1st sem final`";
 if (isset($_GET['table'])) {
     $table = $_GET['table'] ;
-    if ($table === 'users' || $table === 'final_Table') {
+    if ($table === 'studentInfo' || $table === 'FinalResult1stSem' || $table==='InternalResult1stSem') {
         $query = "SELECT * FROM {$table}";
         $result = mysqli_query($connection, $query);
         $row = mysqli_num_rows($result);

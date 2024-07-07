@@ -38,7 +38,6 @@ p, h1, h2, h3, h4, h5, h6 {
 .container {
   display: flex;
   width: 100%;
-  
   height: 100%;
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -129,6 +128,7 @@ img {
   flex-grow: 1;
   padding: 20px;
   overflow-y: auto;
+  justify-content: center;
 }
 
 .navbarRight {
@@ -217,6 +217,15 @@ img {
   }
 }
 
+/* Table  */
+table{
+  background-color: pink;
+}
+
+
+
+
+
 /* Add Button*/
 
       .container-addBtn{
@@ -293,3 +302,7 @@ height: 25px;
 padding: 3px; 
 }
 
+
+.test{
+  background-color: pink;
+}

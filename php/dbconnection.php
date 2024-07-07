@@ -2,7 +2,7 @@
 $servername = "localhost";
 $user = "root";
 $password = "";
-$database = "first_sem_final";
+$database = "Software2080";
 
 //Create connection
 $connection = mysqli_connect($servername, $user, $password, $database);
