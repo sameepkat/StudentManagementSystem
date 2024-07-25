@@ -8,15 +8,14 @@ if ($table === 'studentInfo') {
     //Store datas
     $RollNo = $_GET['roll'];
     $Name = $_GET['name'];
-    $ExamRollNo = $_GET['rollno'];
+    $ExamRollNo = $_GET['examrollno'];
     $PuRegNo = $_GET['regno'];
     $Email = $_GET['email'];
-    $Address = $_GET['address'];
     $PhNo = $_GET['phone'];
     $Sex = $_GET['sex'];
 
-    $query = "INSERT INTO `studentInfo`(Name,ExamRollNo,PuRegNo,Email,Address,PhNo,Sex) VALUES('{$Name}','{$ExamRollNo}','{$PuRegNo}','{$Email}','{$Address}','{$PhNo}','{$Sex}');";
-    echo $query;
+    $query = "INSERT INTO `studentInfo`(RollNo, Name,ExamRollNo,PuRegNo,Email,PhNo,Sex) VALUES('{$RollNo}','{$Name}','{$ExamRollNo}','{$PuRegNo}','{$Email}','{$PhNo}','{$Sex}');";
+    echo $query . "<br>";
     $result = mysqli_query($connection, $query);
     echo $result;
 

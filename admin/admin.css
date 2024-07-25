@@ -249,6 +249,9 @@ tr:nth-of-type(odd){
 th{
   background-color: rgba(164,164,164,0.4);
 }
+.selected-row {
+  background-color: pink !important; 
+}
 
 /* Add Button*/
 

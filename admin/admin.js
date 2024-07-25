@@ -1,6 +1,8 @@
 /*querySelectors*/
 //Buttons
 const addBtnClicked = document.getElementById("addBtn");
+const editButtonClicked = document.getElementById("editBtn");
+const delButtonClicked = document.getElementById("delBtn");
 const submitAddButton = document.getElementById("submitAddBtn");
 //Styles
 const containerAddBtn = document.querySelector(".container-addBtn");
@@ -53,7 +55,9 @@ Object.values(row).forEach((value)=>{
   tr.appendChild(td);
 });
 tr.addEventListener('click', ()=>{
-  console.log('clicked row data: ', data[tr.dataset.index]);
+  table.querySelectorAll('tr').forEach(row => row.classList.remove('selected-row'));
+  tr.classList.add('selected-row');
+  console.log('clicked row data: ', data[tr.dataset.index]["Name"]);
 })
 
 //End of added clickable
@@ -70,14 +74,14 @@ tr.addEventListener('click', ()=>{
 function pushStudentDetails() {
   const table = "studentInfo";
   const name = document.getElementById("name").value;
-  const address = document.getElementById("address").value; // Corrected id to 'Address'
-  const rollNo = document.getElementById("rollno").value;
+  const rollNo = document.getElementById("rollno").value; // Corrected id to 'rollNo'
+  const examrollNo = document.getElementById("examrollno").value;
   const sex = document.getElementById("sex").value; // Get selected dropdown value
   const email = document.getElementById("email").value;
   const regno = document.getElementById("regno").value;
   const phone = document.getElementById("phone").value;
 
-  const url = `../php/studentDetails.php?table=${table}&roll=${rollNo}&name=${name}&address=${address}&rollno=${rollNo}&sex=${sex}&email=${email}&regno=${regno}&phone=${phone}`;
+  const url = `../php/studentDetails.php?table=${table}&roll=${rollNo}&name=${name}&roll=${rollNo}&examrollno=${examrollNo}&sex=${sex}&email=${email}&regno=${regno}&phone=${phone}`;
   const result = fetch(url)
   .then(response => {
     if(!response.ok)
@@ -88,6 +92,10 @@ function pushStudentDetails() {
   .then((data)=>
     console.log("Works")
 );
+}
+
+function editStudentDetails() {
+
 }
 
 //Event Listeners
@@ -119,8 +127,19 @@ addBtnClicked.addEventListener("click", (e) => {
 });
 //AddButton Form Submission
 document.addEventListener("DOMContentLoaded", () => {
+
+//submitAddButton
   submitAddButton.addEventListener("click", (e) => {
     e.preventDefault();
     pushStudentDetails();
   });
+
+//editButton
+editButtonClicked.addEventListener('click', (e)=>{
+  e.preventDefault();
+  editStudentDetails();
+})
+
 });
+
+fetchData('studentInfo');
