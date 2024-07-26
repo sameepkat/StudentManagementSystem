@@ -23,6 +23,7 @@ body {
   height: 100vh;
   background-color: #f5f5f5;
 }
+
 img,
 picture,
 video,
@@ -31,12 +32,7 @@ svg {
   display: block;
   max-width: 100%;
 }
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
+
 p,
 h1,
 h2,
@@ -251,6 +247,9 @@ tr:nth-of-type(odd){
 th{
   background-color: rgba(164,164,164,0.4);
 }
+.selected-row {
+  background-color: pink !important; 
+}
 
 /* Add Button*/
 
@@ -291,7 +290,6 @@ th{
   height: 25px;
   padding: 3px;
 }
-
 .container-addBtn {
   position: absolute;
   max-width: 650px;
@@ -325,4 +323,8 @@ th{
 .input-box select {
   height: 25px;
   padding: 3px;
+}
+#submitAddBtn{
+  margin-top: 20px;
+  flex: 1;
 }
