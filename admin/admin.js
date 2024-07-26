@@ -231,6 +231,11 @@ delButtonClicked.addEventListener('click', (e)=>{
   deleteRow();
 })
 
+function messageDisplay()
+{
+  const messageDisplayBox = document.getElementById('messageBox');
+}
+
 //AddButton Form Submission
 document.addEventListener("DOMContentLoaded", () => {
   //submitAddButton
