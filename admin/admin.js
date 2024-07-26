@@ -9,6 +9,8 @@ const containerAddBtn = document.querySelector(".container-addBtn");
 /*variables*/
 //state
 let showingAddContainer = false;
+let currentSelectedRow = null;
+let addOrEdit = "add";
 
 //functions
 function fetchData(table) {
@@ -43,24 +45,27 @@ function displayData(data) {
     //     td.textContent = value;
     //     tr.appendChild(td);
     //   });
-//Added clickable
-data.forEach((row, index)=>{
-  const tr = document.createElement("tr");
-  tr.style.cursor = "pointer";
-  tr.dataset.index = index;
+    //Added clickable
+    data.forEach((row, index) => {
+      const tr = document.createElement("tr");
+      tr.style.cursor = "pointer";
+      tr.dataset.index = index;
 
-Object.values(row).forEach((value)=>{
-  const td = document.createElement("td");
-  td.textContent = value;
-  tr.appendChild(td);
-});
-tr.addEventListener('click', ()=>{
-  table.querySelectorAll('tr').forEach(row => row.classList.remove('selected-row'));
-  tr.classList.add('selected-row');
-  console.log('clicked row data: ', data[tr.dataset.index]["Name"]);
-})
+      Object.values(row).forEach((value) => {
+        const td = document.createElement("td");
+        td.textContent = value;
+        tr.appendChild(td);
+      });
+      tr.addEventListener("click", () => {
+        table
+          .querySelectorAll("tr")
+          .forEach((row) => row.classList.remove("selected-row"));
+        tr.classList.add("selected-row");
+        console.log("clicked row data: ", data[tr.dataset.index]);
+        currentSelectedRow = data[tr.dataset.index];
+      });
 
-//End of added clickable
+      //End of added clickable
       table.appendChild(tr);
     });
     dataDiv.appendChild(table);
@@ -81,26 +86,33 @@ function pushStudentDetails() {
   const regno = document.getElementById("regno").value;
   const phone = document.getElementById("phone").value;
 
-  const url = `../php/studentDetails.php?table=${table}&roll=${rollNo}&name=${name}&roll=${rollNo}&examrollno=${examrollNo}&sex=${sex}&email=${email}&regno=${regno}&phone=${phone}`;
-  const result = fetch(url)
-  .then(response => {
-    if(!response.ok)
-    {
-      throw new Error('Record for that roll exists');
-  }
-  })
-  .then((data)=>
-    console.log("Works")
-);
+  if(addOrEdit == "add"){
+  console.log("adding");
+  const url = `http://localhost/phpPractice/StudentManagementSystem/php/studentDetails.php?method=post&table=${table}&roll=${rollNo}&name=${name}&roll=${rollNo}&examrollno=${examrollNo}&sex=${sex}&email=${email}&regno=${regno}&phone=${phone}`;
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) {
+        console.log("Record for that roll exists");
+      }
+    })
+    .then((data) => console.log("Added: "+data));
+    console.log(url);
+}else if(addOrEdit == "edit"){
+  console.log("editing");
+  console.log("New roll: ",rollNo);
+  console.log("Old roll: ",currentSelectedRow.RollNo);
+  const url = `../php/studentDetails.php?method=put&table=${table}&oldroll=${currentSelectedRow.RollNo}&newroll=${rollNo}&name=${name}&roll=${rollNo}&examrollno=${examrollNo}&sex=${sex}&email=${email}&regno=${regno}&phone=${phone}`;
+  console.log("URL: ", url);
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) {
+        console.log("Error editing data");
+      }
+    })
+    .then((data) => console.log("Edited: "));
 }
-
-function editStudentDetails() {
-
 }
-
-//Event Listeners
-addBtnClicked.addEventListener("click", (e) => {
-  e.stopPropagation();
+function addStudentInputBox() {
   if (!showingAddContainer) {
     containerAddBtn.style.display = "block";
     showingAddContainer = true;
@@ -108,6 +120,12 @@ addBtnClicked.addEventListener("click", (e) => {
     containerAddBtn.style.display = "none";
     showingAddContainer = false;
   }
+  document.getElementById("name").value = "";
+  document.getElementById("rollno").value = "";
+  document.getElementById("examrollno").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("regno").value = "";
+  document.getElementById("phone").value = "";
   document.addEventListener("keydown", (e) => {
     if (e.key == "Escape") {
       containerAddBtn.style.display = "none";
@@ -124,22 +142,81 @@ addBtnClicked.addEventListener("click", (e) => {
       showingAddContainer = false;
     }
   });
+}
+function editStudentInputBox(
+  name = "",
+  rollNo = "",
+  examRollNo = "",
+  email = "",
+  regNo = "",
+  phone = ""
+) {
+  // e.stopPropagation();
+  if (!showingAddContainer) {
+    containerAddBtn.style.display = "block";
+  addOrEdit = "edit";
+  showingAddContainer = true;
+  } else {
+    containerAddBtn.style.display = "none";
+  addOrEdit = "add";
+  showingAddContainer = false;
+  }
+  //fill details
+  document.getElementById("name").value = name;
+  document.getElementById("rollno").value = rollNo;
+  document.getElementById("examrollno").value = examRollNo;
+  document.getElementById("email").value = email;
+  document.getElementById("regno").value = regNo;
+  document.getElementById("phone").value = phone;
+  document.addEventListener("keydown", (e) => {
+    if (e.key == "Escape") {
+      containerAddBtn.style.display = "none";
+      showingAddContainer = false;
+  addOrEdit = "add";
+}
+    if (e.key == "Enter") {
+      e.preventDefault();
+      pushStudentDetails();
+    }
+  });
+  document.addEventListener("click", (e) => {
+    if (!containerAddBtn.contains(e.target)) {
+      containerAddBtn.style.display = "none";
+      showingAddContainer = false;
+  addOrEdit = "add";
+}
+  });
+}
+/*Event Listeners*/
+//addButton
+addBtnClicked.addEventListener("click", (e) => {
+  addOrEdit = "add";
+  e.stopPropagation();
+  addStudentInputBox();
+
 });
+
+//editButton
+editButtonClicked.addEventListener("click", (e) => {
+  e.stopPropagation();
+  addOrEdit = "edit";
+  editStudentInputBox(
+    currentSelectedRow.Name,
+    currentSelectedRow.RollNo,
+    currentSelectedRow.ExamRollNo,
+    currentSelectedRow.Email,
+    currentSelectedRow.PuRegNo,
+    currentSelectedRow.PhNo
+  );
+});
+
 //AddButton Form Submission
 document.addEventListener("DOMContentLoaded", () => {
-
-//submitAddButton
+  //submitAddButton
   submitAddButton.addEventListener("click", (e) => {
     e.preventDefault();
     pushStudentDetails();
   });
-
-//editButton
-editButtonClicked.addEventListener('click', (e)=>{
-  e.preventDefault();
-  editStudentDetails();
-})
-
 });
 
-fetchData('studentInfo');
+fetchData("studentInfo");
