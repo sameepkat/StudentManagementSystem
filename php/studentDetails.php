@@ -13,11 +13,11 @@ if ($table === 'studentInfo') {
         $Name = $_GET['name'];
         $ExamRollNo = $_GET['examrollno'];
         $PuRegNo = $_GET['regno'];
-        $Email = $_GET['email'];
-        $PhNo = $_GET['phone'];
-        $Sex = $_GET['sex'];
+        $Email = !empty($_GET['email']) ? "'{$_GET['email']}'" : 'null';
+        $PhNo = !empty($_GET['phone']) ?  "'{$_GET['phone']}'" : 'null';
+        $Sex = !empty($_GET['sex']) ?     "'{$_GET['sex']}'" : 'null';
         echo "This was an post<br>";
-        $query = "INSERT INTO `studentInfo`(RollNo, Name,ExamRollNo,PuRegNo,Email,PhNo,Sex) VALUES('{$RollNo}','{$Name}','{$ExamRollNo}','{$PuRegNo}','{$Email}','{$PhNo}','{$Sex}');";
+        $query = "INSERT INTO `studentInfo`(RollNo, Name,ExamRollNo,PuRegNo,Email,PhNo,Sex) VALUES('{$RollNo}','{$Name}','{$ExamRollNo}','{$PuRegNo}',{$Email},{$PhNo},{$Sex});";
     }
     if ($method === "put") {
     echo "Putting";
@@ -36,6 +36,17 @@ if ($table === 'studentInfo') {
         ";
         $query = "UPDATE `studentInfo` SET RollNo='{$RollNo}', Name='{$Name}',ExamRollNo='{$ExamRollNo}',PuRegNo='{$PuRegNo}', Email = {$Email}, PhNo={$PhNo}, Sex={$Sex} WHERE RollNo='{$OldRollNo}';";
         echo "This was an edit <br>";
+    }
+    if($method === "delete")
+    {
+        echo "Deleting <br>";
+        $RollNo = $_GET['roll'];
+        $Name = $_GET['name'];
+        echo "<br>
+        Roll: {$RollNo}<br>
+        Name: {$Name}<br>
+        ";
+        $query = "DELETE FROM `studentInfo` where RollNo={$RollNo} AND Name='{$Name}';";
     }
     echo $query . "<br>";
     $result = mysqli_query($connection, $query);

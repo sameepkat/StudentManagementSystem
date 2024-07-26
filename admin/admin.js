@@ -2,7 +2,7 @@
 //Buttons
 const addBtnClicked = document.getElementById("addBtn");
 const editButtonClicked = document.getElementById("editBtn");
-const delButtonClicked = document.getElementById("delBtn");
+const delButtonClicked = document.getElementById("deleteBtn");
 const submitAddButton = document.getElementById("submitAddBtn");
 //Styles
 const containerAddBtn = document.querySelector(".container-addBtn");
@@ -88,7 +88,7 @@ function pushStudentDetails() {
 
   if(addOrEdit == "add"){
   console.log("adding");
-  const url = `http://localhost/phpPractice/StudentManagementSystem/php/studentDetails.php?method=post&table=${table}&roll=${rollNo}&name=${name}&roll=${rollNo}&examrollno=${examrollNo}&sex=${sex}&email=${email}&regno=${regno}&phone=${phone}`;
+  const url = `../php/studentDetails.php?method=post&table=${table}&roll=${rollNo}&name=${name}&roll=${rollNo}&examrollno=${examrollNo}&sex=${sex}&email=${email}&regno=${regno}&phone=${phone}`;
   fetch(url)
     .then((response) => {
       if (!response.ok) {
@@ -187,6 +187,22 @@ function editStudentInputBox(
 }
   });
 }
+function deleteRow()
+{
+  const table='studentInfo';
+  console.log("Delete is being executed");
+  const url = `http://localhost/phpPractice/StudentManagementSystem/php/studentDetails.php?method=delete&table=${table}&roll=${currentSelectedRow.RollNo}&name=${currentSelectedRow.Name}`;
+  console.log("URL: ", url);
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) {
+        console.log("Error Deleting data");
+      }
+    })
+    .then((data) => console.log("Deleted Successfully: "));
+}
+
+
 /*Event Listeners*/
 //addButton
 addBtnClicked.addEventListener("click", (e) => {
@@ -209,6 +225,11 @@ editButtonClicked.addEventListener("click", (e) => {
     currentSelectedRow.PhNo
   );
 });
+
+delButtonClicked.addEventListener('click', (e)=>{
+  e.stopPropagation();
+  deleteRow();
+})
 
 //AddButton Form Submission
 document.addEventListener("DOMContentLoaded", () => {
