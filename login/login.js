@@ -66,10 +66,13 @@ function fetchData(username, password) {
       let validUser = false;
       if (data.data.length > 0) {
         for (const eachRow of data.data) {
-          console.log("Each row: ", eachRow);
-
+          console.log("Each row: ", eachRow["Name"]);
+          const adminOrStudent = eachRow["Name"] ? "student" : "admin";
           if (username === eachRow.username && password === eachRow.password) {
-            window.location.href = `../admin/admin_en.html`;
+            if(adminOrStudent == "admin")
+              window.location.href = `../admin/admin_en.html`;
+            else
+              window.location.href = `../student/student_en.html`;
             validUser = true;
             break;
           }

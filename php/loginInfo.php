@@ -2,13 +2,12 @@
 session_start();
 include('dbconnection.php');
 
-header('Content-Type: application/json'); 
+header('Content-Type: application/json');
 $response = array();
 
 if (isset($_GET['username']) && isset($_GET['password'])) {
     $username = $_GET['username'];
-    $password = $_GET['password'];
-
+    $password = $_GET['password'];  
     $query = "SELECT * FROM adminLogin WHERE username='{$username}' AND password='{$password}';";
     $result = mysqli_query($connection, $query);
 
@@ -21,7 +20,7 @@ if (isset($_GET['username']) && isset($_GET['password'])) {
         }
         $response['data'] = $data;
     } else {
-        $query = "SELECT * FROM studentLogin WHERE soeId='{$username}' AND Password='{$password}';";
+        $query = "SELECT * FROM studentLogin WHERE username='{$username}' AND password='{$password}';";
         $result = mysqli_query($connection, $query);
 
         if (mysqli_num_rows($result) > 0) {
