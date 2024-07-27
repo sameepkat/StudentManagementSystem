@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$user = "root";
-$password = "";
+$user = "SMSadmin";
+$password = "SMSadmin@1";
 $database = "Software2080";
 
 //Create connection

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="admin.css" />
+    <script src="admin.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbarLeft">
+        <img src="../src/student.jpg" alt="" class="src" />
+        <ul>
+          <li>
+            <button onclick="fetchData('studentInfo')">Student Details</button>
+          </li>
+          <li>
+            <button onclick="fetchData('InternalResult1stSem')">
+              1st sem Internal
+            </button>
+          </li>
+          <li>
+            <button onclick="fetchData('FinalResult1stSem')">
+              1st sem Final Marks
+            </button>
+          </li>
+        </ul>
+        <button class="logout">Logout</button>
+      </div>
+      <div id="mainContentContainer">
+        <span id="messageBox">This is the container for displaying error messages</span>
+        <div class="mainContent" id="mainContent"></div>
+      </div>
+          
+      <div class="navbarRight">
+        <div class="feature">
+          <button id="addBtn">Add</button>
+          <button id="editBtn">Edit</button>
+          <button id="deleteBtn">Delete</button>
+        </div>
+      </div>
+    </div>
+    <div class="container-addBtn">
+      <form action=" " method="post">
+        <div class="content">
+          <div class="input-box">
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter your name" />
+          </div>
+          <div class="input-box">
+            <label for="rollno">Roll:</label>
+            <input type="number" id="rollno" placeholder="Enter your classRoll" />
+          </div>
+          <div class="input-box">
+            <label for="examrollno">Exam Roll No:</label>
+            <input
+              type="text"
+              id="examrollno"
+              placeholder="Enter your roll number"
+            />
+          </div>
+          <div class="input-box">
+            <label for="sex">Sex:</label>
+            <select id="sex">
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+            </select>
+          </div>
+
+          <div class="input-box">
+            <label for="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter your email address"
+            />
+          </div>
+
+          <div class="input-box">
+            <label for="regno">Registration Number:</label>
+            <input
+              type="text"
+              id="regno"
+              placeholder="Enter your registration number"
+            />
+          </div>
+          <div class="input-box">
+            <label for="phone">Phone Number:</label>
+            <input
+              type="number"
+              id="phone"
+              placeholder="Enter your phone number"
+            />
+          </div>
+          <div class="input-box">
+            <button
+              id="submitAddBtn"
+            >Submit
+          </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
