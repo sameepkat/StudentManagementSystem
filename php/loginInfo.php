@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include ('dbconnection.php');
 if($_SERVER['REQUEST_METHOD']=='GET'){
     $username = $_GET['username'];
@@ -7,6 +9,8 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     $query = "SELECT * FROM adminLogin WHERE username='{$username}' AND password='{$password}';";
     $result = mysqli_query($connection, $query);
     if (mysqli_num_rows($result) > 0) {
+        $_SESSION['loggedIn']=true;
+        $_SESSION['username']=$username;
         $data = array();
         while ($row = mysqli_fetch_assoc($result)) {
             $data[] = $row;
