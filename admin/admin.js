@@ -7,6 +7,10 @@ const submitAddButton = document.getElementById("submitAddBtn");
 const logoutButtonClicked = document.querySelector(".logout");
 //Styles
 const containerAddBtn = document.querySelector(".container-addBtn");
+const leftLogo = document.querySelector(".leftLogo");
+const rightLogo = document.querySelector(".rightLogo");
+const navBarLeft = document.querySelector(".navbarLeft");
+const navbarRight = document.querySelector(".navbarRight");
 /*variables*/
 //state
 let showingAddContainer = false;
@@ -279,7 +283,36 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+leftLogo.addEventListener("click", (e) => {
+  if (navBarLeft.style.display === "none") {
+    navBarLeft.style.display = "flex";
+    leftLogo.style.
+    // navBarLeft.style.width = "50%";
+    navBarLeft.style.position = "absolute";
+  } else {
+    navBarLeft.style.display = "none";
+  }
+});
+
+
+
+rightLogo.addEventListener("click", (e) => {
+  if (navbarRight.style.display === "none") {
+    navbarRight.style.display = "flex";
+    navbarRight.style.position = "sticky";
+  } else {
+    navbarRight.style.display = "none";
+  }
+});
+
+
+
+
+
+
 // Show the message on page load for demonstration purposes
 // window.onload = showMessage;
 fetchData("studentInfo");
 // showMessage("Test", "pink");
+
+

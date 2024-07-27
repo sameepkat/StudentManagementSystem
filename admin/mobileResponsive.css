@@ -1,0 +1,40 @@
+
+@media (max-width: 700px) {
+.navbarLeft{
+    display: none;
+}
+.navbarRight{
+    display: none;
+}
+#mobileUILogo
+{
+  display: flex;
+  justify-content: space-between;
+}
+}
+
+@media (min-width: 700px) {
+    .navbarLeft{
+        display: flex;
+    }
+    .navbarRight{
+        display: flex;
+    }
+    #mobileUILogo
+    {
+      display: none;
+    }
+}
+    
+.leftLogo, .rightLogo
+{
+    cursor: pointer;
+}
+/* .leftLogo.show
+{
+
+}
+.rightLogo.show
+{
+
+} */

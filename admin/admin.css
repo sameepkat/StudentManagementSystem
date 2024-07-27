@@ -49,17 +49,22 @@ h6 {
 
 .container {
   display: flex;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  overflow: hidden;
+  /* overflow: hidden; */
   border: 1px solid blue;
+}
+#mobileUILogo {
+  display: none;
+  justify-content: space-between;
 }
 
 .navbarLeft {
-  width: 20%;
+  width: 15vw;
+  height: 100%;
   background-color: #f0f0f0;
   display: flex;
   flex-direction: column;
@@ -69,12 +74,13 @@ h6 {
   box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .navbarLeft > img {
-  height: 200px;
+  width: 100%;
+  height: auto;
   border-radius: 50%;
   margin-bottom: 40px;
 }
 
-.navbarLeft > select {
+/* .navbarLeft > select {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
@@ -100,28 +106,28 @@ h6 {
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
-}
+} */
 
-.navbarLeft > ul li button{
-  text-decoration: none;
-  color: inherit;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  background: none;
+.navButtons {
+  display: flex;
+  color: whitesmoke;
+  background-color: #ff6b6b;
+  justify-content: center;
   width: 100%;
-  height: 100%;
-}
-.navbarLeft ul li button:active{
-  color: white;
-}
-.navbarLeft ul li:hover {
-  background-color: #d0d0d0;
-  color: #007bff;
+  margin-top: 3vh;
+  padding: 0.7em 1.6em;
+  cursor: pointer;
+  border-radius: 0.6em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+  border: none;
 }
 
 .navbarLeft .logout {
+  width: 100%;
+  overflow: hidden;
   margin-top: auto;
-  padding: 10px 20px;
+  padding: 0.7em 1.6em;
   margin-bottom: 50px;
   background-color: #ff6b6b;
   color: #fff;
@@ -149,20 +155,17 @@ h6 {
   transition: top 0.5s ease-in-out;
   z-index: 1000;
   display: none;
-
 }
 
 #messageBox.show {
   top: 10px; /* Slide down position */
 }
 
-#mainContentContainer
-{
+#mainContentContainer {
   margin: 0 auto;
   display: flex;
-  flex-grow:1;
-  flex-direction:column;
-  
+  flex-grow: 1;
+  flex-direction: column;
 }
 .mainContent {
   display: flex;
@@ -174,27 +177,26 @@ h6 {
 }
 
 .navbarRight {
-  width: 15%;
+  width: 20vw;
+  height: 100%;
   background-color: #f0f0f0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
   box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .feature {
   margin-top: 200px;
-  margin-left: 25%;
+  margin: auto;
 }
 
 .navbarRight button {
-  width: 100px;
-  padding: 10px;
+  width: 100%;
+  padding: 0.7em 1.6em;
+  color: whitesmoke;
   margin: 10px 0;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 0.6em;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
   border: none;
@@ -205,79 +207,28 @@ h6 {
   background-color: #e81919;
   color: #ffffff;
 }
-/* 
-@media (max-width: 1200px) {
-  .container {
-    width: 90%;
-  }
-}
-
-@media (max-width: 992px) {
-  .navbarLeft {
-    width: 25%;
-  }
-  .navbarRight {
-    width: 20%;
-  }
-}
-
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    height: auto;
-  }
-  .navbarLeft,
-  .navbarRight {
-    width: 100%;
-    border-radius: 0;
-    border-right: none;
-    border-bottom: 1px solid #ccc;
-    box-shadow: none;
-  }
-  .navbarLeft ul li,
-  .navbarRight button {
-    width: 100%;
-  }
-  .mainContent {
-    padding: 10px;
-  }
-}
-
-@media (max-width: 576px) {
-  .navbarLeft select {
-    padding: 5px;
-  }
-  .navbarLeft ul li {
-    padding: 5px;
-    margin: 5px 0;
-  }
-  .navbarRight button {
-    width: 80px;
-    padding: 5px;
-  }
-  .navbarLeft .logout {
-    padding: 5px 10px;
-  }
-} */
 
 /* Table  */
-table, th, tr, td {
-border: 1px solid black;
-border-collapse: collapse;
-text-align: left;
-padding: 5px;
+table,
+th,
+tr,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: left;
+  padding: 5px;
 }
-table{
+table {
   width: 100%;
 }
-tr:nth-of-type(odd){
-  background-color: rgba(164,164,164,0.25);
+tr:nth-of-type(odd) {
+  background-color: rgba(164, 164, 164, 0.25);
 }
-th{
-  background-color: rgba(164,164,164,0.4);
+th {
+  background-color: rgba(164, 164, 164, 0.4);
 }
 .selected-row {
-  background-color: pink !important; 
+  background-color: pink !important;
 }
 
 /* Add Button*/
@@ -353,7 +304,7 @@ th{
   height: 25px;
   padding: 3px;
 }
-#submitAddBtn{
+#submitAddBtn {
   margin-top: 20px;
   flex: 1;
 }
