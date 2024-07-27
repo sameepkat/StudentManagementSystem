@@ -16,7 +16,7 @@ body {
     margin-bottom: 20px;
     border: 1px solid #ccc
 }
-.language-button {
+.languageBtn {
     background-color: #4CAF50;
     color: #fff;
     padding: 10px 20px;
@@ -24,7 +24,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
-.language-button:hover {
+.languageBtn:hover {
     background-color: #3e8e41;
 }
 .language-container {
@@ -32,17 +32,35 @@ body {
     bottom: 10px;
     left: 10px;
 }
-.loginButton{
+#loginBtn{
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 
-    width: 108%;
-    padding: 8px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
+}
 
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: large;
-    font-style: normal;
+#modeBtn{
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
+#modeBtn:hover{
+    background-color: #3e8e41;
+}
+
+#info{
+    color: darkblue;
+}
+
+#loginBtn:hover{
+    background-color: #3e8e41;
 }
 #wrongUsernameOrPassword{
     display: none;

@@ -7,32 +7,23 @@
 	<link rel="stylesheet" href="login.css">
   </head>
   <body>
+    <button id="modeBtn">Dark Mode</button>
     <div class="container">
-      <h2><img src="../src/login_PU_logo.png" width="300" height="90" /></h2>
+      <h2><img src="../src/login_PU_logo.png" width="322" height="90" /></h2>
+      <p id="info">Sign in to access SMS</p>
       <form id="loginForm" >
-        <label for="username" id="usernameLabel">Username:</label>
-        <input
-          type="text"
-          id="username"
-          class="form-control"
-		  maxlength="15"
-          required
-        /><br /><br />
-        <label for="password" id="passwordLabel">Password:</label>
-        <input
-          type="password"
-          id="password"
-          class="form-control"
-          required
-        /><br /><br />
+        <input type="text" id="username" class="form-control" placeholder="Username" maxlength="15" required/>
+        <br /><br />
+        <input type="password" id="password" class="form-control" placeholder="Password" required/>
+        <br /><br />
         <span id="wrongUsernameOrPassword">JS isn't linked properly.</span><br><br>
         <button id="loginBtn" type="submit">Login</button>
       </form>
       <div class="language-container">
-        <button class="language-button" onclick="setLanguage('en')">
+        <button class="languageBtn" onclick="setLanguage('en')">
           English
         </button>
-        <button class="language-button" onclick="setLanguage('ne')">
+        <button class="languageBtn" onclick="setLanguage('ne')">
           नेपाली
         </button>
       </div>

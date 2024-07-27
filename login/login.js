@@ -101,3 +101,35 @@ document.addEventListener("DOMContentLoaded", () => {
     validate();
   });
 });
+
+
+// Dark mode functionality
+const modeBtn = document.getElementById("modeBtn");
+const buttons = document.querySelectorAll("button");
+const formContainer = document.querySelector(".container");
+const info = document.getElementById("info");
+let darkmode = false;
+
+modeBtn.addEventListener("click",event=>{
+  darkmode = !darkmode;
+  if(darkmode){
+    modeBtn.textContent = "Light Mode";
+    document.body.style.backgroundColor = "#1B1212"; //0 1B1212
+    document.body.style.color="white";
+    formContainer.style.backgroundColor = "#28282B";
+    info.style.color = "blue";
+    buttons.forEach((button,index)=>{
+      button.style.backgroundColor = "darkgreen";
+    })
+  }
+  else{
+    modeBtn.textContent = "Dark Mode";
+    document.body.style.backgroundColor = "";
+    document.body.style.color = "";
+    formContainer.style.backgroundColor = "";
+    info.style.color = "";
+    buttons.forEach((button,index)=>{
+      button.style.backgroundColor = ""; //resets the color back to default
+    })
+  }
+})
