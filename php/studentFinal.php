@@ -2,6 +2,9 @@
 session_start();
 include('dbconnection.php');
 
+header('Content-Type: application/json'); 
+$response = array();
+
 if($_SESSION['loggedIn']==true){
     if (isset($_GET['table'])) {
         $table = $_GET['table'] ;

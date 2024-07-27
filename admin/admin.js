@@ -4,6 +4,7 @@ const addBtnClicked = document.getElementById("addBtn");
 const editButtonClicked = document.getElementById("editBtn");
 const delButtonClicked = document.getElementById("deleteBtn");
 const submitAddButton = document.getElementById("submitAddBtn");
+const logoutButtonClicked = document.querySelector(".logout");
 //Styles
 const containerAddBtn = document.querySelector(".container-addBtn");
 /*variables*/
@@ -14,20 +15,25 @@ let addOrEdit = "add";
 
 //functions
 function fetchData(table) {
-  fetch("../php/studentFinal.php?table=" + table)
+  const url = "../php/studentFinal.php?table=" + table;
+  console.log(url);
+  fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      displayData(data);
+      console.log(data);
+      // displayData(data);
     })
     .catch((error) => {
-      alert("Error fetching data: ", error);
+      console.log("Error fetching data: ", error);
     });
 }
+
 function displayData(data) {
   console.log(data);
   const dataDiv = document.getElementById("mainContent");
   dataDiv.innerHTML = "";
   if (data.length > 0) {
+    
     const table = document.createElement("table");
     const headerRow = document.createElement("tr");
 
@@ -38,14 +44,6 @@ function displayData(data) {
     });
     table.appendChild(headerRow);
 
-    // data.forEach((row) => {
-    //   const tr = document.createElement("tr");
-    //   Object.values(row).forEach((value) => {
-    //     const td = document.createElement("td");
-    //     td.textContent = value;
-    //     tr.appendChild(td);
-    //   });
-    //Added clickable
     data.forEach((row, index) => {
       const tr = document.createElement("tr");
       tr.style.cursor = "pointer";
@@ -65,17 +63,15 @@ function displayData(data) {
         currentSelectedRow = data[tr.dataset.index];
       });
 
-      //End of added clickable
       table.appendChild(tr);
     });
     dataDiv.appendChild(table);
-    // const evenRows = document.querySelectorAll('tr:nth-child(even)');
-    // evenRows.forEach(row=>row.style.cssText+='background-color: rgba(164,164,164,0.25);;');
   } else {
-    console.log("No data found");
+    messageDisplay("No data found");
     dataDiv.innerHTML = "<h1>No Data Found</h1>";
   }
 }
+
 function pushStudentDetails() {
   const table = "studentInfo";
   const name = document.getElementById("name").value;
@@ -86,31 +82,31 @@ function pushStudentDetails() {
   const regno = document.getElementById("regno").value;
   const phone = document.getElementById("phone").value;
 
-  if(addOrEdit == "add"){
-  console.log("adding");
-  const url = `../php/studentDetails.php?method=post&table=${table}&roll=${rollNo}&name=${name}&roll=${rollNo}&examrollno=${examrollNo}&sex=${sex}&email=${email}&regno=${regno}&phone=${phone}`;
-  fetch(url)
-    .then((response) => {
-      if (!response.ok) {
-        console.log("Record for that roll exists");
-      }
-    })
-    .then((data) => console.log("Added: "+data));
+  if (addOrEdit == "add") {
+    console.log("adding");
+    const url = `../php/studentDetails.php?method=post&table=${table}&roll=${rollNo}&name=${name}&roll=${rollNo}&examrollno=${examrollNo}&sex=${sex}&email=${email}&regno=${regno}&phone=${phone}`;
+    fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          messageDisplay("Record for that roll exists");
+        }
+      })
+      .then((data) => console.log("Data Added successfully"));
     console.log(url);
-}else if(addOrEdit == "edit"){
-  console.log("editing");
-  console.log("New roll: ",rollNo);
-  console.log("Old roll: ",currentSelectedRow.RollNo);
-  const url = `../php/studentDetails.php?method=put&table=${table}&oldroll=${currentSelectedRow.RollNo}&newroll=${rollNo}&name=${name}&roll=${rollNo}&examrollno=${examrollNo}&sex=${sex}&email=${email}&regno=${regno}&phone=${phone}`;
-  console.log("URL: ", url);
-  fetch(url)
-    .then((response) => {
-      if (!response.ok) {
-        console.log("Error editing data");
-      }
-    })
-    .then((data) => console.log("Edited: "));
-}
+  } else if (addOrEdit == "edit") {
+    console.log("editing");
+    console.log("New roll: ", rollNo);
+    console.log("Old roll: ", currentSelectedRow.RollNo);
+    const url = `../php/studentDetails.php?method=put&table=${table}&oldroll=${currentSelectedRow.RollNo}&newroll=${rollNo}&name=${name}&roll=${rollNo}&examrollno=${examrollNo}&sex=${sex}&email=${email}&regno=${regno}&phone=${phone}`;
+    console.log("URL: ", url);
+    fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          console.log("Error editing data");
+        }
+      })
+      .then((data) => console.log("Edited: "));
+  }
 }
 function addStudentInputBox() {
   if (!showingAddContainer) {
@@ -154,12 +150,12 @@ function editStudentInputBox(
   // e.stopPropagation();
   if (!showingAddContainer) {
     containerAddBtn.style.display = "block";
-  addOrEdit = "edit";
-  showingAddContainer = true;
+    addOrEdit = "edit";
+    showingAddContainer = true;
   } else {
     containerAddBtn.style.display = "none";
-  addOrEdit = "add";
-  showingAddContainer = false;
+    addOrEdit = "add";
+    showingAddContainer = false;
   }
   //fill details
   document.getElementById("name").value = name;
@@ -172,8 +168,8 @@ function editStudentInputBox(
     if (e.key == "Escape") {
       containerAddBtn.style.display = "none";
       showingAddContainer = false;
-  addOrEdit = "add";
-}
+      addOrEdit = "add";
+    }
     if (e.key == "Enter") {
       e.preventDefault();
       pushStudentDetails();
@@ -183,23 +179,21 @@ function editStudentInputBox(
     if (!containerAddBtn.contains(e.target)) {
       containerAddBtn.style.display = "none";
       showingAddContainer = false;
-  addOrEdit = "add";
-}
+      addOrEdit = "add";
+    }
   });
 }
-function deleteRow()
-{
-  const table='studentInfo';
-  console.log("Delete is being executed");
+function deleteRow() {
+  const table = 'studentInfo';
   const url = `http://localhost/phpPractice/StudentManagementSystem/php/studentDetails.php?method=delete&table=${table}&roll=${currentSelectedRow.RollNo}&name=${currentSelectedRow.Name}`;
   console.log("URL: ", url);
   fetch(url)
     .then((response) => {
       if (!response.ok) {
-        console.log("Error Deleting data");
+        messageDisplay("Error Deleting data");
       }
     })
-    .then((data) => console.log("Deleted Successfully: "));
+    .then((data) => message("Deleted Successfully"));
 }
 
 
@@ -215,6 +209,13 @@ addBtnClicked.addEventListener("click", (e) => {
 //editButton
 editButtonClicked.addEventListener("click", (e) => {
   e.stopPropagation();
+  console.log(currentSelectedRow);
+  if(!currentSelectedRow)
+  {
+    messageDisplay("No Row Selected");
+  }
+  else
+  {
   addOrEdit = "edit";
   editStudentInputBox(
     currentSelectedRow.Name,
@@ -224,17 +225,19 @@ editButtonClicked.addEventListener("click", (e) => {
     currentSelectedRow.PuRegNo,
     currentSelectedRow.PhNo
   );
+}
 });
 
-delButtonClicked.addEventListener('click', (e)=>{
+//Delete Button
+delButtonClicked.addEventListener('click', (e) => {
   e.stopPropagation();
   deleteRow();
 })
 
-function messageDisplay()
-{
-  const messageDisplayBox = document.getElementById('messageBox');
-}
+//Logout Button
+logoutButtonClicked.addEventListener('click',(e)=>{
+  window.location.href = "../php/logout.php";
+})
 
 //AddButton Form Submission
 document.addEventListener("DOMContentLoaded", () => {
@@ -245,4 +248,21 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-fetchData("studentInfo");
+
+
+
+function showMessage(message, color) {
+  const messageBox = document.getElementById('messageBox');
+  messageBox.style.cssText = `background-color: ${color};`;
+  document.getElementById('messageText').textContent = message;
+  messageBox.classList.add('show');
+
+  // Hide the message after 3 seconds
+  setTimeout(() => {
+    messageBox.classList.remove('show');
+  }, 1000);
+}
+
+// Show the message on page load for demonstration purposes
+// window.onload = showMessage;
+showMessage("Working", "lightgreen");

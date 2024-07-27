@@ -49,41 +49,55 @@ function validate() {
 //fetch username and password from users database
 function fetchData(username, password) {
   const url = `../php/loginInfo.php?username=${username}&password=${password}`;
+  console.log(url);
+
   fetch(url)
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
     .then((data) => {
-      for (eachRow in data) {
-        if (username == data[eachRow]["username"] && password == data[eachRow]["password"]) {
-          window.location.href = `../admin/admin_en.html`;
-        } else {
-          if (
-            username !== data[eachRow]["username"]
-          ) {
-            setWrongLoginMessage("Invalid Username");
-            usernameInput.focus();
-            return;
-          } else if (password !== data[eachRow]["password"]) {
-            setWrongLoginMessage("Invalid Password");
-            passwordInput.focus();
-            return;
-          } else {
-            setWrongLoginMessage("Invalid username or password. Try again");
-            usernameInput.focus();
-            return;
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      let validUser = false;
+      if (data.data.length > 0) {
+        for (const eachRow of data.data) {
+          console.log("Each row: ", eachRow);
+
+          if (username === eachRow.username && password === eachRow.password) {
+            window.location.href = `../admin/admin_en.html`;
+            validUser = true;
+            break;
           }
         }
       }
+
+      if (!validUser) {
+        if (data.data.some(row => row.username === username)) {
+          setWrongLoginMessage("Invalid Password");
+          passwordInput.focus();
+        } else {
+          setWrongLoginMessage("Invalid Username");
+          usernameInput.focus();
+        }
+      }
     })
-    .catch(() => {
+    .catch((error) => {
+      console.error("Error:", error);
       setWrongLoginMessage("Invalid username or password. Try again");
     });
 }
+
 //Event Listeners
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("loginForm");
   loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    usernameInput.focus();
+    // usernameInput.focus();
     validate();
   });
 });
