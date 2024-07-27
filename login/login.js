@@ -48,22 +48,21 @@ function validate() {
 }
 //fetch username and password from users database
 function fetchData(username, password) {
-  const adminDatabase = "admin";
-  const url = `../php/adminLoginInfo.php?table=${adminDatabase}&username=${username}&password=${password}`;
+  const url = `../php/loginInfo.php?username=${username}&password=${password}`;
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      for (admin in data) {
-        if (username == data[admin]["username"] && password == data[admin]["password"]) {
+      for (eachRow in data) {
+        if (username == data[eachRow]["username"] && password == data[eachRow]["password"]) {
           window.location.href = `../admin/admin_en.html`;
         } else {
           if (
-            username !== data[admin]["username"]
+            username !== data[eachRow]["username"]
           ) {
             setWrongLoginMessage("Invalid Username");
             usernameInput.focus();
             return;
-          } else if (password !== data[admin]["password"]) {
+          } else if (password !== data[eachRow]["password"]) {
             setWrongLoginMessage("Invalid Password");
             passwordInput.focus();
             return;
