@@ -21,7 +21,7 @@ function fetchData(table) {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      // displayData(data);
+      displayData(data);
     })
     .catch((error) => {
       console.log("Error fetching data: ", error);
@@ -29,11 +29,10 @@ function fetchData(table) {
 }
 
 function displayData(data) {
-  console.log(data);
-  const dataDiv = document.getElementById("mainContent");
+  const dataDiv = document.querySelector(".mainContent");
   dataDiv.innerHTML = "";
   if (data.length > 0) {
-    
+    console.log("Creating table");
     const table = document.createElement("table");
     const headerRow = document.createElement("tr");
 
@@ -67,7 +66,7 @@ function displayData(data) {
     });
     dataDiv.appendChild(table);
   } else {
-    messageDisplay("No data found");
+    showMessage("Error Fetching", "pink");
     dataDiv.innerHTML = "<h1>No Data Found</h1>";
   }
 }
@@ -88,10 +87,10 @@ function pushStudentDetails() {
     fetch(url)
       .then((response) => {
         if (!response.ok) {
-          messageDisplay("Record for that roll exists");
+          showMessage("Record for that roll exists", "pink");
         }
       })
-      .then((data) => console.log("Data Added successfully"));
+      .then((data) => showMessage("Data Added successfully", "lightgreen"));
     console.log(url);
   } else if (addOrEdit == "edit") {
     console.log("editing");
@@ -105,7 +104,7 @@ function pushStudentDetails() {
           console.log("Error editing data");
         }
       })
-      .then((data) => console.log("Edited: "));
+      .then((data) => showMessage("Edited successfully", "lightgreen"));
   }
 }
 function addStudentInputBox() {
@@ -190,12 +189,24 @@ function deleteRow() {
   fetch(url)
     .then((response) => {
       if (!response.ok) {
-        messageDisplay("Error Deleting data");
+        showMessage("Error Deleting data", "pink");
       }
     })
-    .then((data) => message("Deleted Successfully"));
+    .then((data) => showMessage("Deleted Successfully", "lightgreen"));
 }
 
+
+function showMessage(message, color) {
+  const messageBox = document.getElementById('messageBox');
+  messageBox.style.cssText = `background-color: ${color};`;
+  document.getElementById('messageText').textContent = message;
+  messageBox.classList.add('show');
+
+  // Hide the message after 3 seconds
+  setTimeout(() => {
+    messageBox.classList.remove('show');
+  }, 1000);
+}
 
 /*Event Listeners*/
 //addButton
@@ -212,7 +223,7 @@ editButtonClicked.addEventListener("click", (e) => {
   console.log(currentSelectedRow);
   if(!currentSelectedRow)
   {
-    messageDisplay("No Row Selected");
+    showMessage("No Row Selected", "pink");
   }
   else
   {
@@ -251,18 +262,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-function showMessage(message, color) {
-  const messageBox = document.getElementById('messageBox');
-  messageBox.style.cssText = `background-color: ${color};`;
-  document.getElementById('messageText').textContent = message;
-  messageBox.classList.add('show');
-
-  // Hide the message after 3 seconds
-  setTimeout(() => {
-    messageBox.classList.remove('show');
-  }, 1000);
-}
-
 // Show the message on page load for demonstration purposes
 // window.onload = showMessage;
-showMessage("Working", "lightgreen");
+fetchData("studentInfo");

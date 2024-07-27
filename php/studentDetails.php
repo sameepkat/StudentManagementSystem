@@ -9,7 +9,6 @@ if($_SESSION['loggedIn']==true){
     if ($table === 'studentInfo') {
         //Store datas
         $method = $_GET['method'];
-        echo $method;
         if ($method === "post") {
             $RollNo = $_GET['roll'];
             $Name = $_GET['name'];
