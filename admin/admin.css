@@ -55,7 +55,6 @@ h6 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   /* overflow: hidden; */
-  border: 1px solid blue;
 }
 #mobileUILogo {
   display: none;
@@ -85,33 +84,6 @@ h6 {
   font-weight: 600;
   color:#1875d2;
 }
-/* .navbarLeft > select {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border: 1px solid #ccc;
-  background-color: #fff;
-}
-
-.navbarLeft > ul {
-  list-style: none;
-  padding: 0;
-  width: 100%;
-  margin: 20px 0;
-}
-
-.navbarLeft> ul li {
-  padding: 10px;
-  margin: 10px 0;
-  background-color: #e0e0e0;
-  text-align: center;
-  cursor: pointer;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s;
-} */
 
 .navButtons {
   display: flex;
@@ -126,6 +98,10 @@ h6 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
   border: none;
+}
+.navButtons:hover {
+  background-color: #e81919;
+  color: #ffffff;
 }
 
 .navbarLeft .logout {
@@ -154,7 +130,6 @@ h6 {
   transform: translateX(-50%);
   background-color: #f8d7da;
   color: #721c24;
-  border: 1px solid #f5c6cb;
   padding: 10px;
   border-radius: 5px;
   transition: top 0.5s ease-in-out;
@@ -179,11 +154,10 @@ h6 {
   padding: 20px;
   overflow-y: auto;
   justify-content: center;
-  border: 1px solid pink;
 }
 
 .navbarRight {
-  width: 20vw;
+  width: 10vw;
   height: 100%;
   background-color: #f0f0f0;
   display: flex;
@@ -193,6 +167,7 @@ h6 {
 
 .feature {
   margin-top: 200px;
+  width: 70%;
   margin: auto;
 }
 

@@ -18,11 +18,10 @@ let currentSelectedRow = null;
 let addOrEdit = "add";
 let currentlyDisplaying = null;
 //functions
-function fetchData(table) {
+async function fetchData(table) {
   currentlyDisplaying = table;
   const url = "../php/studentFinal.php?table=" + table;
-  console.log(url);
-  fetch(url)
+  await fetch(url)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -32,24 +31,24 @@ function fetchData(table) {
       showMessage("Error fetching data: ", "pink");
     });
 }
-function nameDisplayer() {
-  console.log("nameDisplayerCalled");
+async function nameDisplayer() {
   const greeter = document.getElementById("greeter");
   const url = "../php/loggedInUser.php";
-  console.log("Fetching: "+ url);
-  fetch(url)
+  console.log("Fetching: " + url);
+  await fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      signedInAs = data;
       greeter.textContent = data;
+      console.log("Signed in as: ", signedInAs);
     });
 }
 
 function displayData(data) {
+  signedInAs = "Sameep Kathayat";
   const dataDiv = document.querySelector(".mainContent");
   dataDiv.innerHTML = "";
   if (data.length > 0) {
-    // console.log("Creating table");
     const table = document.createElement("table");
     const headerRow = document.createElement("tr");
 
@@ -69,6 +68,7 @@ function displayData(data) {
         const td = document.createElement("td");
         td.textContent = value;
         tr.appendChild(td);
+       
       });
       tr.addEventListener("click", () => {
         table
@@ -88,7 +88,7 @@ function displayData(data) {
   }
 }
 
-function pushStudentDetails() {
+async function pushStudentDetails() {
   const table = "studentInfo";
   const name = document.getElementById("name").value;
   const rollNo = document.getElementById("rollno").value; // Corrected id to 'rollNo'
@@ -99,29 +99,23 @@ function pushStudentDetails() {
   const phone = document.getElementById("phone").value;
 
   if (addOrEdit == "add") {
-    console.log("adding");
     const url = `../php/studentDetails.php?method=post&table=${table}&roll=${rollNo}&name=${name}&roll=${rollNo}&examrollno=${examrollNo}&sex=${sex}&email=${email}&regno=${regno}&phone=${phone}`;
     try {
-      fetch(url)
+      await fetch(url)
         .then((response) => {
-          if (!response.ok || rollNo === "") {
-            return response.text().then((errorMessage) => {
-              showMessage("Can't added record", "pink");
-            });
+          if (!response.ok || rollNo == "") {
+            showMessage("Can't add record", "pink");
+            return response.text();
           }
         })
         .then((data) => showMessage("Data Added successfully", "lightgreen"));
     } catch {
-      showMessage("Error Adding data");
+      showMessage("Error Adding data", "pink");
     }
-    console.log(url);
   } else if (addOrEdit == "edit") {
-    console.log("editing");
-    console.log("New roll: ", rollNo);
-    console.log("Old roll: ", currentSelectedRow.RollNo);
     const url = `../php/studentDetails.php?method=put&table=${table}&oldroll=${currentSelectedRow.RollNo}&newroll=${rollNo}&name=${name}&roll=${rollNo}&examrollno=${examrollNo}&sex=${sex}&email=${email}&regno=${regno}&phone=${phone}`;
     console.log("URL: ", url);
-    fetch(url)
+    await fetch(url)
       .then((response) => {
         if (!response.ok) {
           console.log("Error editing data");
@@ -210,11 +204,11 @@ function editStudentInputBox(
     }
   });
 }
-function deleteRow() {
+async function deleteRow() {
   const table = "studentInfo";
   const url = `http://localhost/phpPractice/StudentManagementSystem/php/studentDetails.php?method=delete&table=${table}&roll=${currentSelectedRow.RollNo}&name=${currentSelectedRow.Name}`;
   console.log("URL: ", url);
-  fetch(url)
+  await fetch(url)
     .then((response) => {
       if (!response.ok) {
         showMessage("Error Deleting data", "pink");
@@ -307,7 +301,5 @@ rightLogo.addEventListener("click", (e) => {
   }
 });
 
-// Show the message on page load for demonstration purposes
 window.onload = nameDisplayer;
 fetchData("studentInfo");
-// showMessage("Test", "pink");
