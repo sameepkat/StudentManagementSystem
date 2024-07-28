@@ -49,8 +49,8 @@ h6 {
 
 .container {
   display: flex;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
@@ -79,7 +79,12 @@ h6 {
   border-radius: 50%;
   margin-bottom: 40px;
 }
-
+#greeter
+{
+  margin-top: -1em;
+  font-weight: 600;
+  color:#1875d2;
+}
 /* .navbarLeft > select {
   width: 100%;
   padding: 10px;
@@ -168,12 +173,13 @@ h6 {
   flex-direction: column;
 }
 .mainContent {
+  width: 100%;
   display: flex;
   flex-grow: 1;
   padding: 20px;
   overflow-y: auto;
   justify-content: center;
-  border: 1px solid black;
+  border: 1px solid pink;
 }
 
 .navbarRight {
@@ -219,6 +225,7 @@ td {
   padding: 5px;
 }
 table {
+  overflow-wrap: anywhere;
   width: 100%;
 }
 tr:nth-of-type(odd) {
@@ -230,7 +237,6 @@ th {
 .selected-row {
   background-color: pink !important;
 }
-
 /* Add Button*/
 
 .container-addBtn {

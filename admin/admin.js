@@ -29,7 +29,19 @@ function fetchData(table) {
       displayData(data);
     })
     .catch((error) => {
-      console.log("Error fetching data: ", error);
+      showMessage("Error fetching data: ", "pink");
+    });
+}
+function nameDisplayer() {
+  console.log("nameDisplayerCalled");
+  const greeter = document.getElementById("greeter");
+  const url = "../php/loggedInUser.php";
+  console.log("Fetching: "+ url);
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      greeter.textContent = data;
     });
 }
 
@@ -37,7 +49,7 @@ function displayData(data) {
   const dataDiv = document.querySelector(".mainContent");
   dataDiv.innerHTML = "";
   if (data.length > 0) {
-    console.log("Creating table");
+    // console.log("Creating table");
     const table = document.createElement("table");
     const headerRow = document.createElement("tr");
 
@@ -116,14 +128,10 @@ function pushStudentDetails() {
         }
       })
       .then((data) => showMessage("Edited successfully", "lightgreen"));
-   
-
-
   }
   containerAddBtn.style.display = "none";
   showingAddContainer = false;
   fetchData(currentlyDisplaying);
-
 }
 function addStudentInputBox() {
   if (!showingAddContainer) {
@@ -219,7 +227,9 @@ function deleteRow() {
 function showMessage(message, color) {
   const messageBox = document.getElementById("messageBox");
   messageBox.style.cssText = `display: flex; background-color: ${color};`;
+  document.getElementById("messageText").textContent = "";
   document.getElementById("messageText").textContent = message;
+  console.log(message);
   messageBox.classList.add("show");
 
   // Hide the message after 3 seconds
@@ -262,8 +272,7 @@ delButtonClicked.addEventListener("click", (e) => {
     showMessage("No Row Selected", "pink");
   } else {
     deleteRow();
-  fetchData(currentlyDisplaying);
-
+    fetchData(currentlyDisplaying);
   }
 });
 
@@ -274,7 +283,6 @@ logoutButtonClicked.addEventListener("click", (e) => {
 
 //AddButton Form Submission
 document.addEventListener("DOMContentLoaded", () => {
-  //submitAddButton
   submitAddButton.addEventListener("click", (e) => {
     e.preventDefault();
     pushStudentDetails();
@@ -286,33 +294,20 @@ document.addEventListener("DOMContentLoaded", () => {
 leftLogo.addEventListener("click", (e) => {
   if (navBarLeft.style.display === "none") {
     navBarLeft.style.display = "flex";
-    leftLogo.style.
-    // navBarLeft.style.width = "50%";
-    navBarLeft.style.position = "absolute";
   } else {
     navBarLeft.style.display = "none";
   }
 });
 
-
-
 rightLogo.addEventListener("click", (e) => {
   if (navbarRight.style.display === "none") {
     navbarRight.style.display = "flex";
-    navbarRight.style.position = "sticky";
   } else {
     navbarRight.style.display = "none";
   }
 });
 
-
-
-
-
-
 // Show the message on page load for demonstration purposes
-// window.onload = showMessage;
+window.onload = nameDisplayer;
 fetchData("studentInfo");
 // showMessage("Test", "pink");
-
-

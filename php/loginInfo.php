@@ -24,6 +24,8 @@ if (isset($_GET['username']) && isset($_GET['password'])) {
         $result = mysqli_query($connection, $query);
 
         if (mysqli_num_rows($result) > 0) {
+            $_SESSION['loggedIn'] = true;
+            $_SESSION['username'] = $username;
             $data = array();
             while ($row = mysqli_fetch_assoc($result)) {
                 $data[] = $row;
@@ -39,4 +41,3 @@ if (isset($_GET['username']) && isset($_GET['password'])) {
 
 echo json_encode($response);
 mysqli_close($connection);
-?>
