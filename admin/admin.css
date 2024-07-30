@@ -175,7 +175,7 @@ h6 {
   width: 100%;
   padding: 0.7em 1.6em;
   color: whitesmoke;
-  margin: 10px 0;
+  margin: 10px auto;
   cursor: pointer;
   border-radius: 0.6em;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -210,7 +210,8 @@ th {
   background-color: rgba(164, 164, 164, 0.4);
 }
 .selected-row {
-  background-color: pink !important;
+  font-weight: bold;
+  background-color: rgba(135, 206, 250, 0.6)  !important;
 }
 /* Add Button*/
 

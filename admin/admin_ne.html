@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard - Admin</title>
+    <title>ड्यासबोर्ड - व्यवस्थापक</title>
     <link rel="stylesheet" href="admin.css" />
     <link rel="stylesheet" href="mobileResponsive.css">
     <link
@@ -17,17 +17,15 @@
     <div class="container">
       <div class="navbarLeft">
         <img src="../src/student.jpg" alt="" class="src" />
-        <span id="greeter"> Hello USER</span>
-            <button class="navButtons" onclick="fetchData('studentInfo')">Student Details</button>
+        <span id="greeter"> नमस्ते प्रयोगकर्ता</span>
+            <button class="navButtons" onclick="fetchData('studentInfo')">विद्यार्थी विवरण</button>
 
             <button class="navButtons" onclick="fetchData('InternalResult1stSem')">
-              1st sem Internal
-            </button>
+              पहिलो सेमी आन्तरिक            </button>
             <button class="navButtons" onclick="fetchData('FinalResult1stSem')">
-              1st sem Final Marks
-            </button>
-            <button class="navButtons" onclick="fetchData('InternalResult2ndSem')">2nd sem Internal</button>
-        <button class="logout">Logout</button>
+              पहिलो सेमि फाइनल अंक            </button>
+            <button class="navButtons" onclick="fetchData('InternalResult2ndSem')">दोस्रो सेमी आन्तरिक</button>
+        <button class="logout">बाहिर निस्कनुहोस्</button>
       </div>
       <div id="mainContentContainer">
         <div id="mobileUILogo">
@@ -46,9 +44,9 @@
 
       <div class="navbarRight">
         <div class="feature">
-          <button id="addBtn">Add</button>
-          <button id="editBtn">Edit</button>
-          <button id="deleteBtn">Delete</button>
+          <button id="addBtn">थप्नुहोस्</button>
+          <button id="editBtn">सम्पादन गर्नुहोस्</button>
+          <button id="deleteBtn">मेट्नुहोस्</button>
         </div>
       </div>
     </div>
