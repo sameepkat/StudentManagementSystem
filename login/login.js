@@ -114,9 +114,8 @@ modeBtn.addEventListener("click",event=>{
   darkmode = !darkmode;
   if(darkmode){
     modeBtn.textContent = "Light Mode";
-    document.body.style.backgroundColor = "#1B1212"; //0 1B1212
+    document.body.style.backgroundColor = "#28282B"; //0 1B1212
     document.body.style.color="white";
-    formContainer.style.backgroundColor = "#28282B";
     info.style.color = "blue";
     buttons.forEach((button,index)=>{
       button.style.backgroundColor = "darkgreen";
