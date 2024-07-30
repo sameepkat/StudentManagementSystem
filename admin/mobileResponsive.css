@@ -27,18 +27,7 @@ button
 }
 }
 
-@media (min-width: 800px) {
-    .navbarLeft{
-        display: flex;
-    }
-    .navbarRight{
-        display: flex;
-    }
-    #mobileUILogo
-    {
-      display: none;
-    }
-}
+
     
 .leftLogo, .rightLogo
 {

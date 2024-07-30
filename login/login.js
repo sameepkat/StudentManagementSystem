@@ -1,7 +1,7 @@
 //Id selectors for Language
-const usernameTxt = document.getElementById("usernameLabel");
-const passwordTxt = document.getElementById("passwordLabel");
 const loginBtn = document.getElementById("loginBtn");
+const modeButton = document.getElementById("modeBtn");
+const infoText = document.getElementById("info");
 
 //Input box selectors for Validation
 const usernameInput = document.getElementById("username");
@@ -15,9 +15,14 @@ const wrongLogin = document.getElementById("wrongUsernameOrPassword");
 //Set language
 const setLanguage = (lang) => {
   document.documentElement.lang = lang;
-  usernameTxt.textContent = lang == "ne" ? "प्रयोगकर्ता नाम:" : "Username:";
-  passwordTxt.textContent = lang == "ne" ? "पासवर्ड:" : "Password:";
+  usernameInput.placeholder = lang == "ne" ? "प्रयोगकर्ता नाम:" : "Username:";
+  passwordInput.placeholder = lang == "ne" ? "पासवर्ड:" : "Password:";
   loginBtn.textContent = lang == "ne" ? "लगइन:" : "Login";
+  if(darkmode)
+    modeBtn.textContent = lang == "ne" ? "लाइट मोड" : "Light Mode";
+  else
+    modeBtn.textContent = lang == "ne" ? "डार्क् मोड" : "Dark Mode";
+  infoText.textContent = lang == "ne" ? "SMS पहुँच गर्न साइन इन गर्नुहोस्" : "Sign in to access SMS";
 };
 
 //Show message for incorrect login
