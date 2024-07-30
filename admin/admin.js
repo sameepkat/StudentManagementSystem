@@ -68,7 +68,7 @@ function displayData(data) {
         const td = document.createElement("td");
         td.textContent = value;
         tr.appendChild(td);
-       
+
       });
       tr.addEventListener("click", () => {
         table
@@ -83,7 +83,6 @@ function displayData(data) {
     });
     dataDiv.appendChild(table);
   } else {
-    showMessage("Error Fetching", "pink");
     dataDiv.innerHTML = "<h1>No Data Found</h1>";
   }
 }

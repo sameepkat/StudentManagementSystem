@@ -1,12 +1,7 @@
 /*querySelectors*/
 //Buttons
-const addBtnClicked = document.getElementById("addBtn");
-const editButtonClicked = document.getElementById("editBtn");
-const delButtonClicked = document.getElementById("deleteBtn");
-const submitAddButton = document.getElementById("submitAddBtn");
 const logoutButtonClicked = document.querySelector(".logout");
 //Styles
-const containerAddBtn = document.querySelector(".container-addBtn");
 const leftLogo = document.querySelector(".leftLogo");
 const rightLogo = document.querySelector(".rightLogo");
 const navBarLeft = document.querySelector(".navbarLeft");
@@ -68,7 +63,7 @@ function displayData(data) {
         const td = document.createElement("td");
         td.textContent = value;
         tr.appendChild(td);
-       
+
       });
       tr.addEventListener("click", () => {
         table
@@ -83,7 +78,6 @@ function displayData(data) {
     });
     dataDiv.appendChild(table);
   } else {
-    showMessage("Error Fetching", "pink");
     dataDiv.innerHTML = "<h1>No Data Found</h1>";
   }
 }
@@ -127,97 +121,6 @@ async function pushStudentDetails() {
   showingAddContainer = false;
   fetchData(currentlyDisplaying);
 }
-function addStudentInputBox() {
-  if (!showingAddContainer) {
-    containerAddBtn.style.display = "block";
-    showingAddContainer = true;
-  } else {
-    containerAddBtn.style.display = "none";
-    showingAddContainer = false;
-  }
-  document.getElementById("name").value = "";
-  document.getElementById("rollno").value = "";
-  document.getElementById("examrollno").value = "";
-  document.getElementById("email").value = "";
-  document.getElementById("regno").value = "";
-  document.getElementById("phone").value = "";
-  document.addEventListener("keydown", (e) => {
-    if (e.key == "Escape") {
-      containerAddBtn.style.display = "none";
-      showingAddContainer = false;
-    }
-    if (e.key == "Enter") {
-      e.preventDefault();
-      pushStudentDetails();
-      fetchData(currentlyDisplaying);
-    }
-  });
-  document.addEventListener("click", (e) => {
-    if (!containerAddBtn.contains(e.target)) {
-      containerAddBtn.style.display = "none";
-      showingAddContainer = false;
-    }
-  });
-}
-function editStudentInputBox(
-  name = "",
-  rollNo = "",
-  examRollNo = "",
-  email = "",
-  regNo = "",
-  phone = ""
-) {
-  // e.stopPropagation();
-  if (!showingAddContainer) {
-    containerAddBtn.style.display = "block";
-    addOrEdit = "edit";
-    showingAddContainer = true;
-  } else {
-    containerAddBtn.style.display = "none";
-    addOrEdit = "add";
-    showingAddContainer = false;
-  }
-  //fill details
-  document.getElementById("name").value = name;
-  document.getElementById("rollno").value = rollNo;
-  document.getElementById("examrollno").value = examRollNo;
-  document.getElementById("email").value = email;
-  document.getElementById("regno").value = regNo;
-  document.getElementById("phone").value = phone;
-  document.addEventListener("keydown", (e) => {
-    if (e.key == "Escape") {
-      containerAddBtn.style.display = "none";
-      showingAddContainer = false;
-      addOrEdit = "add";
-    }
-    if (e.key == "Enter") {
-      e.preventDefault();
-      pushStudentDetails();
-      fetchData(currentlyDisplaying);
-    }
-  });
-  document.addEventListener("click", (e) => {
-    if (!containerAddBtn.contains(e.target)) {
-      containerAddBtn.style.display = "none";
-      showingAddContainer = false;
-      addOrEdit = "add";
-    }
-  });
-}
-async function deleteRow() {
-  const table = "studentInfo";
-  const url = `http://localhost/phpPractice/StudentManagementSystem/php/studentDetails.php?method=delete&table=${table}&roll=${currentSelectedRow.RollNo}&name=${currentSelectedRow.Name}`;
-  console.log("URL: ", url);
-  await fetch(url)
-    .then((response) => {
-      if (!response.ok) {
-        showMessage("Error Deleting data", "pink");
-      }
-    })
-    .then((data) => showMessage("Deleted Successfully", "lightgreen"));
-  fetchData(currentlyDisplaying);
-}
-
 function showMessage(message, color) {
   const messageBox = document.getElementById("messageBox");
   messageBox.style.cssText = `display: flex; background-color: ${color};`;
@@ -232,57 +135,10 @@ function showMessage(message, color) {
   }, 1000);
 }
 
-/*Event Listeners*/
-//addButton
-addBtnClicked.addEventListener("click", (e) => {
-  addOrEdit = "add";
-  e.stopPropagation();
-  addStudentInputBox();
-});
-
-//editButton
-editButtonClicked.addEventListener("click", (e) => {
-  e.stopPropagation();
-  console.log(currentSelectedRow);
-  if (!currentSelectedRow) {
-    showMessage("No Row Selected", "pink");
-  } else {
-    addOrEdit = "edit";
-    editStudentInputBox(
-      currentSelectedRow.Name,
-      currentSelectedRow.RollNo,
-      currentSelectedRow.ExamRollNo,
-      currentSelectedRow.Email,
-      currentSelectedRow.PuRegNo,
-      currentSelectedRow.PhNo
-    );
-  }
-});
-
-//Delete Button
-delButtonClicked.addEventListener("click", (e) => {
-  e.stopPropagation();
-  if (!currentSelectedRow) {
-    showMessage("No Row Selected", "pink");
-  } else {
-    deleteRow();
-    fetchData(currentlyDisplaying);
-  }
-});
 
 //Logout Button
 logoutButtonClicked.addEventListener("click", (e) => {
   window.location.href = "../php/logout.php";
-});
-
-//AddButton Form Submission
-document.addEventListener("DOMContentLoaded", () => {
-  submitAddButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    pushStudentDetails();
-    console.log(currentlyDisplaying);
-    fetchData(currentlyDisplaying);
-  });
 });
 
 leftLogo.addEventListener("click", (e) => {
@@ -293,13 +149,7 @@ leftLogo.addEventListener("click", (e) => {
   }
 });
 
-rightLogo.addEventListener("click", (e) => {
-  if (navbarRight.style.display === "none") {
-    navbarRight.style.display = "flex";
-  } else {
-    navbarRight.style.display = "none";
-  }
-});
+
 
 window.onload = nameDisplayer;
 fetchData("studentInfo");

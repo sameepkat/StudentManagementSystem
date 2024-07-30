@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard - Admin</title>
     <link rel="stylesheet" href="student.css" />
-    <link rel="stylesheet" href="mobileResponsive.css">
+    <link rel="stylesheet" href="mobileResponsive.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
-    
+
     <script src="student.js" defer></script>
   </head>
   <body>
@@ -18,95 +18,34 @@
       <div class="navbarLeft">
         <img src="../src/student.jpg" alt="" class="src" />
         <span id="greeter"> Hello USER</span>
-            <button class="navButtons" onclick="fetchData('studentInfo')">Student Details</button>
-          
-            <button class="navButtons" onclick="fetchData('InternalResult1stSem')">
-              1st sem Internal
-            </button>
-            <button class="navButtons" onclick="fetchData('FinalResult1stSem')">
-              1st sem Final Marks
-            </button>
-            <button class="navButtons" onclick="fetchData('InternalResult2ndSem')">2nd sem Internal</button>
+        <button class="navButtons" onclick="fetchData('studentInfo')">
+          Student Details
+        </button>
+
+        <button class="navButtons" onclick="fetchData('InternalResult1stSem')">
+          1st sem Internal
+        </button>
+        <button class="navButtons" onclick="fetchData('FinalResult1stSem')">
+          1st sem Final Marks
+        </button>
+        <button class="navButtons" onclick="fetchData('InternalResult2ndSem')">
+          2nd sem Internal
+        </button>
         <button class="logout">Logout</button>
       </div>
       <div id="mainContentContainer">
         <div id="mobileUILogo">
-          <span class="material-symbols-outlined leftLogo">
-            list
-            </span><span class="material-symbols-outlined rightLogo">
-              menu
-              </span>
+          <span class="material-symbols-outlined leftLogo"> list </span
+          >
         </div>
         <div id="messageBox">
-        <span class="material-symbols-outlined"> info </span>
-          <div id="messageText">This is the container for displaying error messages</div>
+          <span class="material-symbols-outlined"> info </span>
+          <div id="messageText">
+            This is the container for displaying error messages
+          </div>
         </div>
         <div class="mainContent" id="mainContent"></div>
       </div>
-
-
-    </div>
-    <div class="container-addBtn">
-      <form method="post">
-        <div class="content">
-          <div class="input-box">
-            <label for="name">Name:</label>
-            <input type="text" id="name" placeholder="Enter your name" />
-          </div>
-          <div class="input-box">
-            <label for="rollno">Roll:</label>
-            <input
-              type="number"
-              id="rollno"
-              placeholder="Enter your classRoll"
-            />
-          </div>
-          <div class="input-box">
-            <label for="examrollno">Exam Roll No:</label>
-            <input
-              type="text"
-              id="examrollno"
-              placeholder="Enter your roll number"
-            />
-          </div>
-          <div class="input-box">
-            <label for="sex">Sex:</label>
-            <select id="sex">
-              <option value="M">Male</option>
-              <option value="F">Female</option>
-            </select>
-          </div>
-
-          <div class="input-box">
-            <label for="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              placeholder="Enter your email address"
-            />
-          </div>
-
-          <div class="input-box">
-            <label for="regno">Registration Number:</label>
-            <input
-              type="text"
-              id="regno"
-              placeholder="Enter your registration number"
-            />
-          </div>
-          <div class="input-box">
-            <label for="phone">Phone Number:</label>
-            <input
-              type="number"
-              id="phone"
-              placeholder="Enter your phone number"
-            />
-          </div>
-          <div class="input-box">
-            <button id="submitAddBtn">Submit</button>
-          </div>
-        </div>
-      </form>
     </div>
   </body>
 </html>
