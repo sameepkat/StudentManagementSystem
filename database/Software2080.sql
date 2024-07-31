@@ -360,29 +360,6 @@ ALTER TABLE `studentLogin`
   ADD UNIQUE KEY `password` (`Name`),
   ADD UNIQUE KEY `soeId` (`username`),
   ADD UNIQUE KEY `Password_2` (`password`);
---
--- Database: `test`
---
-CREATE DATABASE IF NOT EXISTS `test` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `test`;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `1st sem final`
---
-
-CREATE TABLE `1st sem final` (
-  `"Exam RollNo."` varchar(8) DEFAULT NULL,
-  `"Basic EngineeringDrawing"` varchar(3) DEFAULT NULL,
-  `"Calculus I"` varchar(3) DEFAULT NULL,
-  `"Digital Logic"` varchar(3) DEFAULT NULL,
-  `"Discrete Structure"` varchar(8) DEFAULT NULL,
-  `"Problem SolvingTechniques"` varchar(3) DEFAULT NULL,
-  `"Programming in C"` varchar(3) DEFAULT NULL,
-  `"ComputerWorkshop"` varchar(2) DEFAULT NULL,
-  `"SGPA"` varchar(3) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
