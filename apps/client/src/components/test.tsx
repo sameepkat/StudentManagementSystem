@@ -1,7 +1,11 @@
 function TestComponent(){
     return(
-        <h1 className="flex justify-center">Status: 200 OK</h1> 
-        // How can I return text/json instead of this heading element
+        <>
+            <div className="flex justify-center align-middle ">
+                <h1>Status: 200 OK</h1>
+            </div>
+        </>
     )
+
 }
 export default TestComponent;

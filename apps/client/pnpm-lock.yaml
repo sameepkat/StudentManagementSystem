@@ -33,6 +33,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.3.5
         version: 18.3.5(@types/react@18.3.18)
+      '@types/react-router':
+        specifier: ^5.1.20
+        version: 5.1.20
       '@types/react-router-dom':
         specifier: ^5.3.3
         version: 5.3.3
@@ -57,6 +60,9 @@ importers:
       postcss:
         specifier: ^8.5.1
         version: 8.5.1
+      react-router:
+        specifier: ^7.1.5
+        version: 7.1.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-router-dom:
         specifier: ^7.1.5
         version: 7.1.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
