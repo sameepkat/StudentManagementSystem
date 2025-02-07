@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function LoginCard() {
+const LoginCard: React.FC = () => {
   const [darkMode, setDarkMode] = useState(false);
+  const navigate = useNavigate();
+
   return (
     <>
       <div
@@ -43,25 +46,24 @@ function LoginCard() {
               className="block border border-gray-400 px-3 py-2 my-2 w-3/4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
             <button
-              className="relative block py-2 px-5 bg-green-500 hover:bg-green-700 rounded-md
-             text-white my-2 cursor-pointer transition-transform hover:scale-105 active:scale-95
-             mt-8 mb-3"
+              className="relative block py-2 px-5 bg-green-500 hover:bg-green-700 rounded-md text-white my-2 cursor-pointer transition-transform hover:scale-105 active:scale-95 mt-8 mb-3"
+              onClick={() => navigate("/dashboard")}
             >
               Login
             </button>
           </div>
         </main>
         <div>
-          <button className="p-3 bg-green-500 hover:bg-green-700 text-white cursor-pointer transition-transfotm rounded-md hover:scale-105 active:scale-95 m-2">
+          <button className="p-3 bg-green-500 hover:bg-green-700 text-white cursor-pointer transition-transform rounded-md hover:scale-105 active:scale-95 m-2">
             English
           </button>
-          <button className="p-3 bg-green-500 hover:bg-green-700 text-white cursor-pointer transition-transfotm rounded-md hover:scale-105 active:scale-95 m-2">
+          <button className="p-3 bg-green-500 hover:bg-green-700 text-white cursor-pointer transition-transform rounded-md hover:scale-105 active:scale-95 m-2">
             नेपाली
           </button>
         </div>
       </div>
     </>
   );
-}
+};
 
 export default LoginCard;

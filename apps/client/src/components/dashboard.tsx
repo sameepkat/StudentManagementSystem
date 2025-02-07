@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 function Dashboard() {
+  const navigate = useNavigate();
   return (
-    <div className="flex justify-center gap-2 align-center">
+    <div className="flex gap-2 ">
       <nav className="border h-screen w-1/4 flex flex-col items-center shadow-2xl justify-around overflow-x-auto">
         <img
           src="/student.jpg"
@@ -18,11 +20,14 @@ function Dashboard() {
             2nd sem
           </button>
         </div>
-        <button className="px-2 border rounded-xl p-3 w-[75%] text-white bg-[#ff6b6b] hover:bg-[#e81919] hover:scale-105 active:scale-95 cursor-pointer mt-3">
+        <button
+          className="px-2 border rounded-xl p-3 w-[75%] text-white bg-[#ff6b6b] hover:bg-[#e81919] hover:scale-105 active:scale-95 cursor-pointer mt-3"
+          onClick={() => navigate("/login")}
+        >
           Logout
         </button>
       </nav>
-      <main className="border h-screen w-2/4 shadow-2xl"></main>
+      <main className="border  w-2/4 shadow-2xl flex-1">hi</main>
       <section className="border h-screen w-1/4 shadow-2xl"></section>
     </div>
   );
