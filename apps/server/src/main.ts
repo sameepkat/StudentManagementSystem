@@ -1,8 +1,14 @@
-import express, { Request, Response } from "express";
+import express, { Application, Request, Response } from "express";
+import type Express from "express";
 import testMiddleWare from "./routes/test";
+import config from "./config/config";
 
-const app = express();
-const PORT = 8000;
+const app: Application = express();
+const PORT: number = config.PORT;
+
+console.log(PORT);
+
+app.use(express.json());
 
 app.get("/", (req: Request, res: Response) => {
   res.status(200).json({
