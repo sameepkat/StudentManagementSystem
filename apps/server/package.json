@@ -12,12 +12,12 @@
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "mongoose": "^8.9.6"
+    "mariadb": "^3.4.0",
+    "sequelize": "^6.37.5"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
-    "@types/node": "^22.13.0",
-    "bun-livereload": "^1.0.3",
+    "@types/node": "^22.13.1",
     "cors": "^2.8.5",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.7.3"
