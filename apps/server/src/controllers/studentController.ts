@@ -43,7 +43,7 @@ async function addStudentLogin(
       username,
       email,
     });
-    res.status(200).json({ message: "User added successfully" });
+    res.status(200).json({ message: "Student added successfully" });
   } catch (error) {
     console.log("Error creating user: ", error);
     res.status(400).json({ message: "Error creating user" });

@@ -10,7 +10,6 @@ const studentRouter = Router();
 studentRouter
   .get("/loginList", studentLoginList)
   .post("/register", addStudentLogin)
-  .get("/studentList", studentInfoList)
-  .get("/result/final/:sem");
+  .get("/studentList", studentInfoList);
 
 export default studentRouter;
