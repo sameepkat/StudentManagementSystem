@@ -1,11 +1,7 @@
 import { firstInternal, firstFinal } from "../models/resultModel";
 import { Request, Response, NextFunction } from "express";
 
-async function firstSemResult(
-  req: Request,
-  res: Response,
-  _next: NextFunction
-) {
+async function firstSemInternal() {
   const result = await firstInternal.findAll({
     attributes: [
       "RollNo",
@@ -21,9 +17,23 @@ async function firstSemResult(
     ],
   });
   if (!result) {
-    return res.status(400).json({ message: "Error " });
+    return { message: "Result not found" };
   }
-  res.status(200).send(result);
+  return result;
+}
+
+async function firstSemResult(
+  req: Request,
+  res: Response,
+  _next: NextFunction
+) {
+  // type ExamType = "internal" | "final";
+  const examType = req.params.examType;
+  console.log(examType);
+  if (examType === "internal") {
+    const result = await firstSemInternal();
+    res.status(200).json(result);
+  }
 }
 
 export { firstSemResult };
