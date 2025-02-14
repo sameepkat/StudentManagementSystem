@@ -1,5 +1,9 @@
 import { useNavigate } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import TableFetch from "./tableFetch";
+
 function Dashboard() {
+  const queryClient = new QueryClient();
   const navigate = useNavigate();
   return (
     <div className="flex gap-2 ">
@@ -27,7 +31,11 @@ function Dashboard() {
           Logout
         </button>
       </nav>
-      <main className="border  w-2/4 shadow-2xl flex-1">hi</main>
+      <main className="border  w-2/4 shadow-2xl flex-1">
+        <QueryClientProvider client={queryClient}>
+          <TableFetch />
+        </QueryClientProvider>
+      </main>
       <section className="border h-screen w-1/4 shadow-2xl"></section>
     </div>
   );
