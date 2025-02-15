@@ -1,8 +1,12 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import TableFetch from "./tableFetch";
 
 function Dashboard() {
   const navigate = useNavigate();
+  const [result, setResult] = useState<"studentList" | "internal" | "final">(
+    "studentList"
+  );
   return (
     <div className="flex gap-2 ">
       <nav className="border h-screen w-1/4 flex flex-col items-center shadow-2xl justify-around overflow-x-auto">
@@ -12,14 +16,23 @@ function Dashboard() {
           className="w-2xs rounded-full m-4 shadow-2xs shadow-blue-400"
         />
         <div className="flex flex-col items-center gap-3 w-full ">
-          <button className="px-2 border rounded-xl p-3 w-[75%] text-white bg-[#ff6b6b] hover:bg-[#e81919] hover:scale-105 active:scale-95 cursor-pointer">
+          <button
+            className="px-2 border rounded-xl p-3 w-[75%] text-white bg-[#ff6b6b] hover:bg-[#e81919] hover:scale-105 active:scale-95 cursor-pointer"
+            onClick={() => setResult("studentList")}
+          >
             Student Details
           </button>
-          <button className="px-2 border rounded-xl p-3 w-[75%] text-white bg-[#ff6b6b] hover:bg-[#e81919] hover:scale-105 active:scale-95 cursor-pointer">
-            1st sem
+          <button
+            className="px-2 border rounded-xl p-3 w-[75%] text-white bg-[#ff6b6b] hover:bg-[#e81919] hover:scale-105 active:scale-95 cursor-pointer"
+            onClick={() => setResult("internal")}
+          >
+            Internal
           </button>
-          <button className="px-2 border rounded-xl p-3 w-[75%] text-white bg-[#ff6b6b] hover:bg-[#e81919] hover:scale-105 active:scale-95 cursor-pointer">
-            2nd sem
+          <button
+            className="px-2 border rounded-xl p-3 w-[75%] text-white bg-[#ff6b6b] hover:bg-[#e81919] hover:scale-105 active:scale-95 cursor-pointer"
+            onClick={() => setResult("final")}
+          >
+            Final
           </button>
         </div>
         <button
@@ -30,7 +43,7 @@ function Dashboard() {
         </button>
       </nav>
       <main className="border  w-2/4 shadow-2xl flex-1">
-        <TableFetch />
+        <TableFetch fetchType={result} />
       </main>
       <section className="border h-screen w-1/4 shadow-2xl"></section>
     </div>
