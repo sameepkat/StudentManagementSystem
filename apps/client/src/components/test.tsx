@@ -31,9 +31,21 @@ function TestComponent(): JSX.Element {
   if (!data) return <h1>No data found</h1>;
   return (
     <>
-      <div className="flex justify-center align-middle ">
-        <h3>Server: {data.server}</h3>
-        <h3>Database: {data.database}</h3>
+      <div className="flex justify-center align-middle flex-col">
+        <h3
+          className={`bold text-3xl ${
+            data.server === 200 ? "bg-green-500" : "bg-red-500"
+          }`}
+        >
+          Server: {data.server}
+        </h3>
+        <h3
+          className={`bold text-3xl ${
+            data.database === "true" ? "bg-green-500" : "bg-red-500"
+          }`}
+        >
+          Database: {data.database}
+        </h3>
       </div>
     </>
   );
