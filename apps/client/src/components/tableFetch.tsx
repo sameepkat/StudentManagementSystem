@@ -158,7 +158,9 @@ function TableFetch({ fetchType }: TableFetchProps) {
                     {(item as InternalResultInterface).Prog_C}
                   </td>
                   {fetchType === "final" && (
-                    <td>{(item as FinalResultInterface).SGPA}</td>
+                    <td className="border-1">
+                      {(item as FinalResultInterface).SGPA}
+                    </td>
                   )}
                 </>
               ) : (
