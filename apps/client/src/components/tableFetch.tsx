@@ -105,7 +105,7 @@ function TableFetch({ fetchType }: TableFetchProps) {
   if (!data) return <div>Data not found</div>;
   return (
     <div>
-      <table className="border-1">
+      <table className="border-1 ">
         <thead className="border-1">
           <tr>
             <th className="border-1">Roll No </th>

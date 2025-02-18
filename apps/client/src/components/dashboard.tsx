@@ -8,7 +8,7 @@ function Dashboard() {
     "studentList"
   );
   return (
-    <div className="flex gap-2 ">
+    <div className="flex gap-2 h-screen">
       <nav className="border h-screen w-1/4 flex flex-col items-center shadow-2xl justify-around overflow-x-auto">
         <img
           src="/student.jpg"
@@ -42,7 +42,7 @@ function Dashboard() {
           Logout
         </button>
       </nav>
-      <main className="border  w-2/4 shadow-2xl flex-1">
+      <main className="border  w-2/4 shadow-2xl flex-1 h-screen overflow-y-auto">
         <TableFetch fetchType={result} />
       </main>
       <section className="border h-screen w-1/4 shadow-2xl"></section>
